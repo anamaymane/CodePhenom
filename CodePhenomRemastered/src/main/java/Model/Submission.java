@@ -19,22 +19,110 @@ public class Submission {
     @ManyToOne
     private Problem problem;
 
-    String codeSource;
+    private String codeSource;
 
     @ManyToOne
-    User user;
+    private User user;
 
-    Timestamp dateSubmission;
+    private Timestamp dateSubmission;
 
-    String languageName;
+    private String languageName;
 
-    String memoryResult;
+    private String memoryResult;
 
-    String timeResult;
+    private String timeResult;
 
-    String verdict;
+    private String verdict;
 
-    String type;
+    private String type;
 
-    String totalVerdict;
+    private String totalVerdict;
+
+    public Long getSubmissionId() {
+        return submissionId;
+    }
+
+    public void setSubmissionId(Long submissionId) {
+        this.submissionId = submissionId;
+    }
+
+    public Problem getProblem() {
+        return problem;
+    }
+
+    public void setProblem(Problem problem) {
+        this.problem = problem;
+    }
+
+    public String getCodeSource() {
+        return codeSource;
+    }
+
+    public void setCodeSource(String codeSource) {
+        this.codeSource = codeSource;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Timestamp getDateSubmission() {
+        return dateSubmission;
+    }
+
+    public void setDateSubmission(Timestamp dateSubmission) {
+        this.dateSubmission = dateSubmission;
+    }
+
+    public String getLanguageName() {
+        return languageName;
+    }
+
+    public void setLanguageName(String languageName) {
+        this.languageName = languageName;
+    }
+
+    public String getMemoryResult() {
+        return memoryResult;
+    }
+
+    public void setMemoryResult(String memoryResult) {
+        this.memoryResult = memoryResult;
+    }
+
+    public String getTimeResult() {
+        return timeResult;
+    }
+
+    public void setTimeResult(String timeResult) {
+        this.timeResult = timeResult;
+    }
+
+    public String getVerdict() {
+        return verdict;
+    }
+
+    public void setVerdict(String verdict) {
+        this.verdict = verdict;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getTotalVerdict() {
+        return totalVerdict;
+    }
+
+    public void setTotalVerdict(String totalVerdict) {
+        this.totalVerdict = totalVerdict;
+    }
 }
