@@ -1,24 +1,20 @@
 package DatabasePackage;
 
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class HibernateOGMUtil {
-    private static EntityManagerFactory entityManagerFactory = null;
+    private static EntityManagerFactory entityManagerFactory;
 
-
-    static {
-        try {
-            entityManagerFactory = Persistence.createEntityManagerFactory("test");
-        } catch (Exception e) {
-            System.err.println("Initial EntityManagerFactory creation failed." + e);
-        }
+    @BeforeClass
+    public static void setUpEntityManagerFactory() {
+        entityManagerFactory = Persistence.createEntityManagerFactory( "test" );
     }
 
-    public static EntityManagerFactory getEntityManagerFactory() {
-        return entityManagerFactory;
-    }
-
+    @AfterClass
     public static void closeEntityManagerFactory() {
         entityManagerFactory.close();
     }

@@ -7,9 +7,7 @@ import Model.User;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.transaction.NotSupportedException;
-import javax.transaction.SystemException;
-import javax.transaction.TransactionManager;
+import javax.transaction.*;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -19,22 +17,19 @@ public class UserInsert {
     private static EntityManagerFactory entityManagerFactory;
 
 
-    public static void setUpEntityManagerFactoryAndPopulateTheDatastore() throws SystemException, NotSupportedException {
+    public static void setUpEntityManagerFactoryAndPopulateTheDatastore() throws SystemException, NotSupportedException, HeuristicRollbackException, HeuristicMixedException, RollbackException {
 
-        entityManagerFactory = HibernateOGMUtil.getEntityManagerFactory();
-        if(entityManagerFactory == null) System.out.println("entity manager factory is null");
+        HibernateOGMUtil.setUpEntityManagerFactory();
 
-        EntityManager em = entityManagerFactory.createEntityManager();
-        if(em == null) System.out.println("em is null");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        entityManager.getTransaction().begin();
+
         Announcement announcement = new Announcement("Tile number 1","the body", new Timestamp(new Date().getTime()));
 
-        em.getTransaction().begin();
+        entityManager.persist( announcement );
 
-        em.persist( announcement );
-
-        em.getTransaction().commit();
-
-        em.close();
+        entityManager.getTransaction().commit();
 
         HibernateOGMUtil.closeEntityManagerFactory();
     }
