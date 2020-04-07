@@ -1,4 +1,6 @@
-<%--
+<%@ page import="queryTesting.UserInsert" %>
+<%@ page import="javax.transaction.SystemException" %>
+<%@ page import="javax.transaction.NotSupportedException" %><%--
   Created by IntelliJ IDEA.
   User: aym
   Date: 4/5/20
@@ -11,6 +13,14 @@
     <title>Title</title>
 </head>
 <body>
-
+<%
+    try {
+        UserInsert.setUpEntityManagerFactoryAndPopulateTheDatastore();
+    } catch (SystemException e) {
+        e.printStackTrace();
+    } catch (NotSupportedException e) {
+        System.out.println("Message :\n*******\n " + e.getMessage());
+    }
+%>
 </body>
 </html>

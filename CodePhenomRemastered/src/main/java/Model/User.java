@@ -14,6 +14,20 @@ import java.util.List;
 @Entity
 public class User {
 
+    public User(){
+
+    }
+
+    public User(String username, String email, String fullName, int score, String description, Timestamp dateRegistration, String role){
+        this.username = username;
+        this.email = email;
+        this.fullName = fullName;
+        this.score = score;
+        this.description = description;
+        this.dateRegistration = dateRegistration;
+        this.role = role;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long userId;
@@ -24,7 +38,7 @@ public class User {
 
     private String fullName;
 
-    private String score;
+    private int score;
 
     private String description;
 
@@ -42,6 +56,7 @@ public class User {
 
     @OneToMany(mappedBy = "receiver")
     private List<Message> messagedReceived = new ArrayList<Message>();
+
 
     public Long getUserId() {
         return userId;
@@ -75,11 +90,11 @@ public class User {
         this.fullName = fullName;
     }
 
-    public String getScore() {
+    public int getScore() {
         return score;
     }
 
-    public void setScore(String score) {
+    public void setScore(int score) {
         this.score = score;
     }
 

@@ -13,13 +13,23 @@ public class Announcement {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
-    private long announcementId;
+    private Long announcementId;
 
     private String title;
 
     private String body;
 
     private Timestamp dateAnnouncement;
+
+    public Announcement(){
+
+    }
+
+    public Announcement(String title,String body, Timestamp dateAnnouncement){
+        this.title = title;
+        this.body = body;
+        this.dateAnnouncement = dateAnnouncement;
+    }
 
     public long getAnnouncementId() {
         return announcementId;

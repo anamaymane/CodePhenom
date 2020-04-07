@@ -1,9 +1,9 @@
 package Model;
 
 
-import jdk.internal.loader.AbstractClassLoaderValue;
+
 import org.hibernate.annotations.Entity;
-import org.hibernate.annotations.GenericGenerator;
+
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -46,13 +46,7 @@ public class Problem {
     @OneToMany(mappedBy = "problem")
     private List<TestCase> testCases = new ArrayList<TestCase>();
 
-    @Embeddable
-    public class Commentary {
 
-        private User user;
-        Timestamp date;
-        String content;
-    }
 
     public Long getProblemId() {
         return problemId;
@@ -167,5 +161,13 @@ public class Problem {
     }
 
 
+}
+
+@Embeddable
+class Commentary {
+
+    private User user;
+    Timestamp date;
+    String content;
 }
 
