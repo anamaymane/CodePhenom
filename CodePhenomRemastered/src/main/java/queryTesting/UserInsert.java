@@ -22,9 +22,10 @@ public class UserInsert {
     public static void setUpEntityManagerFactoryAndPopulateTheDatastore() throws SystemException, NotSupportedException {
 
         entityManagerFactory = HibernateOGMUtil.getEntityManagerFactory();
+        if(entityManagerFactory == null) System.out.println("entity manager factory is null");
 
         EntityManager em = entityManagerFactory.createEntityManager();
-
+        if(em == null) System.out.println("em is null");
         Announcement announcement = new Announcement("Tile number 1","the body", new Timestamp(new Date().getTime()));
 
         em.getTransaction().begin();
