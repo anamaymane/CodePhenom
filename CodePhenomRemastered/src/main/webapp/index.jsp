@@ -15,7 +15,11 @@
 <%
     try {
         try {
-            UserInsert.setUpEntityManagerFactoryAndPopulateTheDatastore();
+            try {
+                new  UserInsert().setUpEntityManagerFactoryAndPopulateTheDatastore();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         } catch (HeuristicRollbackException e) {
             e.printStackTrace();
         } catch (HeuristicMixedException e) {

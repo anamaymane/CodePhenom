@@ -2,9 +2,6 @@ package Model;
 
 
 
-import org.hibernate.annotations.Entity;
-
-
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;

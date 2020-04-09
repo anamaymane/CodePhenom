@@ -7,15 +7,14 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class HibernateOGMUtil {
-    private static EntityManagerFactory entityManagerFactory;
 
     @BeforeClass
-    public static void setUpEntityManagerFactory() {
-        entityManagerFactory = Persistence.createEntityManagerFactory( "test" );
+    public static EntityManagerFactory setUpEntityManagerFactory() throws ClassNotFoundException {
+        return Persistence.createEntityManagerFactory( "test" );
     }
 
     @AfterClass
-    public static void closeEntityManagerFactory() {
+    public static void closeEntityManagerFactory(EntityManagerFactory entityManagerFactory) {
         entityManagerFactory.close();
     }
 }

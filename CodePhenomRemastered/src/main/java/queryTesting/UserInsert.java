@@ -7,6 +7,7 @@ import Model.User;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.transaction.*;
 
 import java.sql.Timestamp;
@@ -14,14 +15,16 @@ import java.util.Date;
 
 public class UserInsert {
 
+    EntityManager entityManager;
+
     private static EntityManagerFactory entityManagerFactory;
 
 
-    public static void setUpEntityManagerFactoryAndPopulateTheDatastore() throws SystemException, NotSupportedException, HeuristicRollbackException, HeuristicMixedException, RollbackException {
+    public  void setUpEntityManagerFactoryAndPopulateTheDatastore() throws SystemException, NotSupportedException, HeuristicRollbackException, HeuristicMixedException, RollbackException, ClassNotFoundException {
 
-        HibernateOGMUtil.setUpEntityManagerFactory();
+        entityManagerFactory = HibernateOGMUtil.setUpEntityManagerFactory();
 
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager = entityManagerFactory.createEntityManager();
 
         entityManager.getTransaction().begin();
 
@@ -31,7 +34,7 @@ public class UserInsert {
 
         entityManager.getTransaction().commit();
 
-        HibernateOGMUtil.closeEntityManagerFactory();
+        HibernateOGMUtil.closeEntityManagerFactory(entityManagerFactory);
     }
 
 
