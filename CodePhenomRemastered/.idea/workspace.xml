@@ -7,12 +7,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd7eb9bf-3d75-4c66-832d-4ceb0349f364" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/CodePhenomRemastered.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CodePhenomRemastered.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/AvailableLanguage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/AvailableLanguage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/Commentary.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/Commentary.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/Message.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/Problem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/Problem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/Submission.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/Submission.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/TestCase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/TestCase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/../Jenkinsfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -46,21 +60,30 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
   <component name="ProjectId" id="1ZBnV3Iypvc0dxYtKcvNvxofzJO" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.25661677" />
@@ -74,14 +97,40 @@
       <recent name="$PROJECT_DIR$/src/main/resources/META-INF" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.272">
+  <component name="RunManager" selected="Maven.testJsf [jetty:run]">
     <configuration name="All in CodePhenomRemastered" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodePhenomRemastered" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
+        <option name="BSP.BeforeRunTask" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="testJsf [jetty:run]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="jetty:run" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
     </configuration>
     <configuration name="Tomcat 9.0.272" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.272" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8081/CodePhenomRemastered_war_exploded/" />
@@ -158,34 +207,16 @@
         </option>
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.All in CodePhenomRemastered" />
+      <item itemvalue="Maven.testJsf [jetty:run]" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.272" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in CodePhenomRemastered" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <option name="contentProportion" value="0.24661246" />
-          <treeState>
-            <expand>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Finished" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-            </expand>
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -216,6 +247,7 @@
       <workItem from="1586400189372" duration="2442000" />
       <workItem from="1586435842345" duration="1623000" />
       <workItem from="1586440948843" duration="1193000" />
+      <workItem from="1586957468830" duration="3102000" />
     </task>
     <task id="LOCAL-00001" summary="Adding some Model (Problem, User and Submission)">
       <created>1586225086150</created>
@@ -284,7 +316,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Adding some Model (Problem, User and Submission)" />
@@ -303,9 +335,10 @@
       <screen x="0" y="27" width="1920" height="1000" />
     </state>
     <state x="555" y="187" width="800" height="677" key="#Web_Browsers/0.27.1920.1000@0.27.1920.1000" timestamp="1584321613848" />
-    <state x="418" y="184" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586290767756">
-      <screen x="0" y="27" width="1920" height="1000" />
+    <state x="418" y="163" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586960785928">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="418" y="163" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586960785928" />
     <state x="418" y="184" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1000@0.27.1920.1000" timestamp="1586290767756" />
     <state x="768" y="213" width="374" height="626" key="#com.intellij.ide.util.MemberChooser" timestamp="1586260749016">
       <screen x="0" y="27" width="1920" height="1000" />
@@ -327,21 +360,25 @@
       <screen x="0" y="27" width="1920" height="1000" />
     </state>
     <state x="361" y="40" width="1187" height="912" key="CommitChangelistDialog2/0.27.1920.1000@0.27.1920.1000" timestamp="1586442097188" />
-    <state width="1389" height="48" key="GridCell.Tab.0.bottom" timestamp="1586442242786">
-      <screen x="0" y="27" width="1920" height="1000" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1586962252193">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586962252193" />
     <state width="1389" height="48" key="GridCell.Tab.0.bottom/0.27.1920.1000@0.27.1920.1000" timestamp="1586442242786" />
-    <state width="1389" height="48" key="GridCell.Tab.0.center" timestamp="1586442242786">
-      <screen x="0" y="27" width="1920" height="1000" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1586962252193">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586962252193" />
     <state width="1389" height="48" key="GridCell.Tab.0.center/0.27.1920.1000@0.27.1920.1000" timestamp="1586442242786" />
-    <state width="1389" height="48" key="GridCell.Tab.0.left" timestamp="1586442242786">
-      <screen x="0" y="27" width="1920" height="1000" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1586962252192">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586962252192" />
     <state width="1389" height="48" key="GridCell.Tab.0.left/0.27.1920.1000@0.27.1920.1000" timestamp="1586442242786" />
-    <state width="1389" height="48" key="GridCell.Tab.0.right" timestamp="1586442242786">
-      <screen x="0" y="27" width="1920" height="1000" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1586962252193">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586962252193" />
     <state width="1389" height="48" key="GridCell.Tab.0.right/0.27.1920.1000@0.27.1920.1000" timestamp="1586442242786" />
     <state width="1389" height="48" key="GridCell.Tab.1.bottom" timestamp="1586442242787">
       <screen x="0" y="27" width="1920" height="1000" />
@@ -403,5 +440,26 @@
       <screen x="0" y="27" width="1920" height="1000" />
     </state>
     <state x="269" y="184" width="1372" height="683" key="new project wizard/0.27.1920.1000@0.27.1920.1000" timestamp="1584322114226" />
+  </component>
+  <component name="com.vaadin.designer2.intellij.settings.SizePresetsSettingsComponent">
+    <option name="sizePresets">
+      <list>
+        <SizePreset>
+          <option name="caption" value="Phone" />
+          <option name="height" value="568" />
+          <option name="width" value="320" />
+        </SizePreset>
+        <SizePreset>
+          <option name="caption" value="Tablet" />
+          <option name="height" value="1024" />
+          <option name="width" value="768" />
+        </SizePreset>
+        <SizePreset>
+          <option name="caption" value="Desktop" />
+          <option name="height" value="900" />
+          <option name="width" value="1440" />
+        </SizePreset>
+      </list>
+    </option>
   </component>
 </project>
