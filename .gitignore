@@ -2,7 +2,6 @@
 
 # Maven specific files
 target/
-target/*
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -18,5 +17,3 @@ buildNumber.properties
 *.iws
 *.ipr
 .idea/
-.idea/*
-CodePhenomRemastered/.idea/workspace.xml
