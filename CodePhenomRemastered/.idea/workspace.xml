@@ -8,17 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bd7eb9bf-3d75-4c66-832d-4ceb0349f364" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/CodePhenomRemastered.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CodePhenomRemastered.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Model/AvailableLanguage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/AvailableLanguage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Model/Commentary.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/Commentary.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Model/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/Message.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Model/Problem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/Problem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Model/Submission.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/Submission.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Model/TestCase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/TestCase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/../Jenkinsfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,6 +238,7 @@
       <workItem from="1586435842345" duration="1623000" />
       <workItem from="1586440948843" duration="1193000" />
       <workItem from="1586957468830" duration="3102000" />
+      <workItem from="1586966210927" duration="18870000" />
     </task>
     <task id="LOCAL-00001" summary="Adding some Model (Problem, User and Submission)">
       <created>1586225086150</created>
@@ -335,10 +326,10 @@
       <screen x="0" y="27" width="1920" height="1000" />
     </state>
     <state x="555" y="187" width="800" height="677" key="#Web_Browsers/0.27.1920.1000@0.27.1920.1000" timestamp="1584321613848" />
-    <state x="418" y="163" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586960785928">
+    <state x="418" y="163" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586985086368">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="418" y="163" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586960785928" />
+    <state x="418" y="163" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586985086368" />
     <state x="418" y="184" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1000@0.27.1920.1000" timestamp="1586290767756" />
     <state x="768" y="213" width="374" height="626" key="#com.intellij.ide.util.MemberChooser" timestamp="1586260749016">
       <screen x="0" y="27" width="1920" height="1000" />

@@ -184,10 +184,6 @@
                             <host>localhost</host>
                             <port>9999</port>
                         </httpConnector>
-                        <!--<scanIntervalSeconds>5</scanIntervalSeconds>
-                        <webAppConfig>
-                            <allowDuplicateFragmentNames>true</allowDuplicateFragmentNames>
-                        </webAppConfig>-->
                     </configuration>
                 </plugin>
             </plugins>
