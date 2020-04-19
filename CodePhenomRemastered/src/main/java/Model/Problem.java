@@ -163,7 +163,7 @@ public class Problem {
 @Embeddable
 class Commentary {
 
-    private User user;
+    String  username;
     Timestamp date;
     String content;
 }

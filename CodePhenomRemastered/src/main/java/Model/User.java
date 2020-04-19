@@ -14,7 +14,7 @@ public class User {
 
     }
 
-    public User(String username, String email, String fullName, int score, String description, Timestamp dateRegistration, String role){
+    public User(String username, String email, String fullName,String description, int score, Timestamp dateRegistration, String role, String password){
         this.username = username;
         this.email = email;
         this.fullName = fullName;
@@ -22,6 +22,8 @@ public class User {
         this.description = description;
         this.dateRegistration = dateRegistration;
         this.role = role;
+        this.lastRegistration = dateRegistration;
+        this.password = password;
     }
 
     @Id
@@ -43,6 +45,16 @@ public class User {
     private Timestamp lastRegistration;
 
     private String role;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    private String password;
 
     @OneToMany(mappedBy = "user")
     private List<Submission> submissions = new ArrayList<Submission>();
