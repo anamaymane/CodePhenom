@@ -22,82 +22,131 @@
 <div class="clearfix"></div>
 
 <div class="content-wrapper">
-<div class="container-fluid">
-<div class="card mt-3">
-    <div class="card-content">
-        <div class="row row-group m-0">
-            <div class="col-12 col-lg-6 col-xl-4 border-light">
-                <div class="card-body">
-                    <h5 class="text-white mb-0">9526 <span class="float-right"><i class="fa fa-shopping-cart"></i></span></h5>
-                    <div class="progress my-3" style="height:3px;">
-                        <div class="progress-bar" style="width:55%"></div>
-                    </div>
-                    <p class="mb-0 text-white small-font">Number of problem's category available on the platform </p>
-                </div>
-            </div>
-
-            <div class="col-12 col-lg-6 col-xl-4 border-light">
-                <div class="card-body">
-                    <h5 class="text-white mb-0"><h:outputText value="#{problemDao.getProblemSize()}" /><span class="float-right"><i class="fa fa-eye"></i></span></h5>
-                    <div class="progress my-3" style="height:3px;">
-                        <div class="progress-bar" style="width:55%"></div>
-                    </div>
-                    <p class="mb-0 text-white small-font">Problems number </p>
-                </div>
-            </div>
-            <div class="col-12 col-lg-6 col-xl-4 border-light">
-                <div class="card-body">
-                    <h5 class="text-white mb-0"><h:outputText value="#{userDao.getRegistredUsersSize()}" /> <span class="float-right"><i class="fa fa-envira"></i></span></h5>
-                    <div class="progress my-3" style="height:3px;">
-                        <div class="progress-bar" style="width:55%"></div>
-                    </div>
-                    <p class="mb-0 text-white small-font">Number of registred users </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-</div>
-
-<div class="content-wrapper">
     <div class="container-fluid">
-
-
-        <div class="card">
-            <div class="card-body">
-
-                <ui:repeat value="#{requestScope['announcements']}" var="announcement">
-                <div class="row border border-secondary content">
-                    <div class="card-body p-0 col-lg-12">
-                        <div class="text-center">
-                            <h4>
-                                <h:outputText value="#{announcement.title}" />
-                            </h4>
+        <div class="card mt-3">
+            <div class="card-content">
+                <div class="row row-group m-0">
+                    <div class="col-12 col-lg-6 col-xl-4 border-light">
+                        <div class="card-body">
+                            <h5 class="text-white mb-0">9526 <span class="float-right"><i
+                                    class="fa fa-shopping-cart"></i></span></h5>
+                            <div class="progress my-3" style="height:3px;">
+                                <div class="progress-bar" style="width:55%"></div>
+                            </div>
+                            <p class="mb-0 text-white small-font">Number of problem's category available on the platform </p>
                         </div>
-                        <div class="mailbox-read-info">
-                            <h6>
-                                <span class="mailbox-read-time float-right"><h:outputText value="#{announcement.dateAnnouncement}" /></span>
-                            </h6>
-                        </div>
-                        <div class="mailbox-read-message">
-                            <h:outputText value="#{announcement.body}" />
-                        </div>
-                        <!-- /.mailbox-read-message -->
                     </div>
 
+                    <div class="col-12 col-lg-6 col-xl-4 border-light">
+                        <div class="card-body">
+                            <h5 class="text-white mb-0"><h:outputText value="#{problemDao.getProblemSize()}"/><span
+                                    class="float-right"><i class="fa fa-eye"></i></span></h5>
+                            <div class="progress my-3" style="height:3px;">
+                                <div class="progress-bar" style="width:55%"></div>
+                            </div>
+                            <p class="mb-0 text-white small-font">Problems number </p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4 border-light">
+                        <div class="card-body">
+                            <h5 class="text-white mb-0"><h:outputText value="#{userDao.getRegistredUsersSize()}"/> <span
+                                    class="float-right"><i class="fa fa-envira"></i></span></h5>
+                            <div class="progress my-3" style="height:3px;">
+                                <div class="progress-bar" style="width:55%"></div>
+                            </div>
+                            <p class="mb-0 text-white small-font">Number of registred users </p>
+                        </div>
+                    </div>
                 </div>
-                </ui:repeat>
             </div>
         </div>
     </div>
 </div>
+
+<div class="content-wrapper ">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header">Top Members
+
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <ui:repeat value="#{userDao.getUserOrderedByScore()}" var="user">
+                            <div class="col-lg-4 text-center">
+
+                                <h:graphicImage value="img/users/#{user.username}" style="width: 60px; height: 60px;"
+                                                alt="User Image" class="rounded-circle"/>
+                                <br/>
+                                <a
+                                    class="users-list-name"
+                            ><h:outputText value="#{user.username}"/></a>
+                                <br/>
+                                <span class="users-list-date"><h:outputText value="#{user.score}"/></span>
+                            </div>
+
+                        </ui:repeat>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="#">View All Users</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="container" id="jar" style="margin-bottom: 20px">
+                            <ui:repeat value="#{requestScope['announcements']}" var="announcement">
+                                <div class="row border border-secondary content">
+                                    <div class="card-body p-0 col-lg-12">
+                                        <div class="text-center">
+                                            <h4><h:outputText value="#{announcement.title}" escape="false"/></h4>
+                                        </div>
+                                        <div class="mailbox-read-info">
+                                            <h6>
+                                                    <span class="mailbox-read-time float-right"><h:outputText
+                                                            value="#{announcement.dateAnnouncement}"
+                                                            escape="false"/></span>
+                                            </h6>
+                                        </div>
+                                        <br/>
+                                        <div class="mailbox-read-message">
+                                            <h:outputText value="#{announcement.body}" escape="false"/>
+                                        </div>
+                                        <!-- /.mailbox-read-message -->
+                                    </div>
+
+                                </div>
+
+                            </ui:repeat>
+                            <div style="margin-bottom: 40px">
+                                <nav>
+                                    <ul class="pagination justify-content-center pagination-sm">
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 
 
 <ui:insert name="footer">
     <ui:include src="components/footerUser.xhtml"/>
 </ui:insert>
+
+<script src="assets/js/jsPagination.js"></script>
 
 
 </html>

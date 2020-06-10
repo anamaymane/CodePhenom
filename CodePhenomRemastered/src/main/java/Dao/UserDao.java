@@ -71,6 +71,22 @@ public class UserDao {
         return users.size();
     }
 
+    public List<User> getUserOrderedByScore() throws ClassNotFoundException {
+        entityManagerFactory = HibernateOGMUtil.setUpEntityManagerFactory();
+
+        entityManager = entityManagerFactory.createEntityManager();
+
+        entityManager.getTransaction().begin();
+
+
+        String query = "FROM User as h order by score DESC";
+        List<User> users = entityManager.createQuery( query , User.class )
+                .setMaxResults(6)
+                .getResultList();
+
+        return users;
+    }
+
 
     public int isUserAlreadyRegistred(String username, String email) throws ClassNotFoundException {
 
