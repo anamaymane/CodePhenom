@@ -8,24 +8,56 @@
 <body class="bg-theme bg-theme1">
 
 <div id="header">
-    <ui:insert name="header" >
-        <ui:include src="components/header.xhtml" />
+    <ui:insert name="header">
+        <ui:include src="components/header.xhtml"/>
     </ui:insert>
 </div>
 
 <div id="navbar">
-    <ui:insert name="navbar" >
-        <ui:include src="components/navbarUser.xhtml" />
+    <ui:insert name="navbar">
+        <ui:include src="components/navbarUser.xhtml"/>
     </ui:insert>
 </div>
 
+<div class="clearfix"></div>
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+
+        <div class="card">
+            <div class="card-body">
+                <h1><h:outputText value="#{param['hi']}" /></h1>
+                <ui:repeat value="#{param['announcements']}" var="announcement" size="#{param['announcements'].size()}">
+                <div class="row border border-secondary content">
+                    <div class="card-body p-0 col-lg-12">
+                        <div class="text-center">
+                            <h4>
+                                <h:outputText value="#{announcement.title}" />
+                            </h4>
+                        </div>
+                        <div class="mailbox-read-info">
+                            <h6>
+                                <span class="mailbox-read-time float-right"><h:outputText value="#{announcement.dateAnnouncement}" /></span>
+                            </h6>
+                        </div>
+                        <div class="mailbox-read-message">
+                            <h:outputText value="#{announcement.body}" />
+                        </div>
+                        <!-- /.mailbox-read-message -->
+                    </div>
+
+                </div>
+                </ui:repeat>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 
 
-    <ui:insert name="footer" >
-        <ui:include src="components/footerUser.xhtml" />
-    </ui:insert>
-
+<ui:insert name="footer">
+    <ui:include src="components/footerUser.xhtml"/>
+</ui:insert>
 
 
 </html>

@@ -31,7 +31,7 @@ public class SignInWork extends HttpServlet {
                     session.setAttribute("email",user.getEmail());
                     session.setAttribute("fullName",user.getFullName());
                     session.setAttribute("description",user.getDescription());
-                    //
+                    System.out.println("entered here");
                 }
 
                 request.getRequestDispatcher("/index.xhtml").forward(request, response);
