@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<body class="bg-theme bg-theme1">
+
+<div id="header">
+    <ui:insert name="header">
+        <ui:include src="components/header.xhtml"/>
+    </ui:insert>
+</div>
+
+<div id="navbar">
+    <ui:insert name="navbar">
+        <ui:include src="components/navbarUser.xhtml"/>
+    </ui:insert>
+</div>
+
+<div class="clearfix"></div>
+
+
+
+<div class="content-wrapper ">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header">Recent Order Tables
+
+                    </div>
+                    <div class="card-body">
+                        <form class="needs-validation" method="post"
+                              action="./problemSetRedirection?display=difficulty">
+                            <div class="row">
+                                <div class="col">
+                                    <input type="number" class="form-control"
+                                           placeholder="Minimum points" name="min" required=""/>
+                                </div>
+                                <div class="col">
+                                    <input type="number" class="form-control"
+                                           placeholder="Maximum points" name="max" required=""/>
+                                </div>
+                                <div class="col">
+                                    <button type="submit" class="btn btn-warning">Search
+                                        by difficulty</button>
+                                </div>
+                            </div>
+
+                        </form>
+
+                        <form method="post" action="./problemSetRedirection?display=type">
+                            <div class="row" style="margin-top: 20px">
+                                <div class="col">
+                                    <div class="form-group">
+
+                                        <select class="form-control" name="type" required="">
+                                            <option></option>
+                                            <ui:repeat value="#{requestScope['categories']}" var="category">
+
+                                            <option><h:outputText value="#{category}"/></option>
+
+                                            </ui:repeat>>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <button type="submit" class="btn btn-warning">Search
+                                        by category</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="example2" class="table align-items-center table-flush table-borderless">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Problem Name</th>
+                                <th>Type</th>
+                                <th>Difficulty</th>
+                                <th>Solved</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <ui:repeat value="#{requestScope['problemList']}" var="problem">
+                            <tr>
+                                <td><h:outputText value="#{problem.problemId}"/></td>
+                                <td><h:outputText value="#{problem.name}"/></td>
+                                <td><h:outputText value="#{problem.type}"/></td>
+                                <td><h:outputText value="#{problem.difficulty}"/></td>
+                                <td><h:outputText value="#{problem.solved}"/></td>
+                            </tr>
+                            </ui:repeat>
+                            </tbody></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</div>
+</body>
+
+
+<ui:insert name="footer">
+    <ui:include src="components/footerUser.xhtml"/>
+</ui:insert>
+
+
+<script>
+    console.log("HI");
+
+    $(document).ready(function () {
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": false,
+            "info": false,
+            "autoWidth": false,
+        });
+    });
+</script>
+
+</html>
+
