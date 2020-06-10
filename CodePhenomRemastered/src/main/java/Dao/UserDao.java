@@ -3,6 +3,8 @@ package Dao;
 import DatabasePackage.HibernateOGMUtil;
 import Model.User;
 
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -10,6 +12,8 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
+@ManagedBean(name = "userDao")
+@SessionScoped
 public class UserDao {
 
     private EntityManager entityManager;
@@ -47,6 +51,24 @@ public class UserDao {
         System.out.println("the size is : " + users.size());
         if(users.size() == 0) return null;
         else return users.iterator().next();
+    }
+
+    public int getRegistredUsersSize() throws ClassNotFoundException {
+
+        entityManagerFactory = HibernateOGMUtil.setUpEntityManagerFactory();
+
+        entityManager = entityManagerFactory.createEntityManager();
+
+        entityManager.getTransaction().begin();
+
+        String query = "FROM User as h";
+
+        List<User> users = entityManager.createQuery( query , User.class )
+                .getResultList();
+
+        System.out.println("the size is : " + users.size());
+
+        return users.size();
     }
 
 
