@@ -1,7 +1,6 @@
 package MainPackage;
 
 import Dao.AnnouncementDao;
-import Dao.UserInsert;
 import Model.Announcement;
 
 import javax.servlet.ServletException;
