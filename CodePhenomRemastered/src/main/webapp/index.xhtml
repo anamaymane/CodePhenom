@@ -26,8 +26,8 @@
 
         <div class="card">
             <div class="card-body">
-                <h1><h:outputText value="#{param['hi']}" /></h1>
-                <ui:repeat value="#{param['announcements']}" var="announcement" size="#{param['announcements'].size()}">
+
+                <ui:repeat value="#{welcomePageBean.announcements}" var="announcement" size="#{param['announcements'].size()}">
                 <div class="row border border-secondary content">
                     <div class="card-body p-0 col-lg-12">
                         <div class="text-center">
