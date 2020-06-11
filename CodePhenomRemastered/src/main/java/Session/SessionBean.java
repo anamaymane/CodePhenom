@@ -2,21 +2,27 @@ package Session;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.Serializable;
 
 @ManagedBean(name = "sessionBean")
 @ApplicationScoped
-public class SessionBean {
-    private static HttpSession session = null;
+public class SessionBean implements Serializable {
 
+    private  HttpSession session = null;
 
     public HttpSession getSession() {
-        FacesContext facesContext = FacesContext.getCurrentInstance();
-        HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
-        return session;
+        if(session == null) {
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            session = (HttpSession) facesContext.getExternalContext().getSession(false);
+        }
+        return (HttpSession) session;
     }
+
+
 
 
 }

@@ -1,6 +1,7 @@
 package Dao;
 
 import DatabasePackage.HibernateOGMUtil;
+import Model.Commentary;
 import Model.Problem;
 import Model.User;
 import com.mongodb.client.model.Filters;
@@ -11,7 +12,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -108,5 +111,28 @@ public class ProblemDao {
         System.out.println("the size is : " + problems.size());
 
         return problems.size();
+    }
+
+    public void insertCommentIntoProblem(Long problemId,String username,String content) throws ClassNotFoundException {
+
+        entityManagerFactory = HibernateOGMUtil.setUpEntityManagerFactory();
+
+        entityManager = entityManagerFactory.createEntityManager();
+
+        entityManager.getTransaction().begin();
+
+        String query = "FROM Problem as h where problemId = :problemId";
+
+        Problem problem = entityManager.createQuery( query , Problem.class )
+                .setParameter("problemId",problemId)
+                .getSingleResult();
+
+        Commentary comments = new Commentary(username, new Timestamp(System.currentTimeMillis()), content);
+
+        problem.getCommentaries().add(comments);
+
+        entityManager.getTransaction().commit();
+
+        HibernateOGMUtil.closeEntityManagerFactory(entityManagerFactory);
     }
 }

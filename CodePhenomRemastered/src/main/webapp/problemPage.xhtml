@@ -118,14 +118,14 @@
                     </nav>
                 </div>
                 <div class="card" style="padding: 40px">
-                    <form method="post" action="./SendComment">
+                    <form method="post" action="./sendComment">
                         <div class="post">
                             <c:choose>
                                 <c:when test="#{sessionBean.getSession() != null}">
 
-                                    <h:inputText type="hidden" id="custId" name="username"
-                                                 value="#{sessionBean.getSession().getAttribute('username')}"/>
-                                    <h:inputText
+                                    <input type="hidden" id="custId" name="username"
+                                                 value='#{sessionBean.getSession().getAttribute("username")}'/>
+                                    <input
                                             type="hidden" id="custId1" name="id"
                                             value="#{requestScope['problem'].problemId}"/>
                                 </c:when>
@@ -133,16 +133,17 @@
                             </c:choose>
 
                             <div class="user-block">
+
                                 <c:choose>
                                     <c:when test="#{sessionBean.getSession() != null}">
 
-                                        <h:graphicImage class="img-circle img-bordered-sm"
-                                                        value="img/users/#{sessionBean.getSession().getAttribute('username')}"
+                                        <h:graphicImage class="product-img rounded-circle"
+                                                        value='img/users/#{sessionBean.getSession().getAttribute("username")}'
                                                         alt="user image"/>
                                     </c:when>
                                     <c:otherwise>
 
-                                        <img class="img-circle img-bordered-sm"
+                                        <img class="product-img rounded-circle"
                                              src="img/users/default_user_pic" alt="user image"/>
 
                                     </c:otherwise>
@@ -152,7 +153,7 @@
                                 <span class="username">
                                      <c:choose>
                     <c:when test="#{sessionBean.getSession() != null}">
-                                   <a href="#">#{sessionBean.getSession().getAttribute('username')}</a>
+                                   <a href="#">#{sessionBean.getSession().getAttribute("username")}</a>
                                         </c:when>
                                          <c:otherwise>
                                             <a href="#">guest</a>
@@ -178,7 +179,7 @@
                                 </c:when>
                                 <c:otherwise>
 
-                                <a class="btn btn-sm btn-warning" href="./signPage"><i
+                                <a class="btn btn-sm btn-warning" href="./signIn"><i
                                         class="fas fa-comments"></i> Comment</a>
 
                                 </c:otherwise>
@@ -194,11 +195,13 @@
                         <div class="col-lg-12">
                             <div class="post">
                                 <div class="user-block">
-                                    <h:graphicImage class="img-circle img-bordered-sm"
+                                    <h:graphicImage class="product-img rounded-circle"
                                          value="img/users/#{commentary.username}"
-                                    alt="user image"/> <span class="username"> <a
+                                    alt="user image"/>
+                                    <span class="username"> <a
                                         href="#">#{commentary.username}</a>
-										</span> <span class="description">Shared publicly - #{commentary.date}</span>
+										</span>
+                                    <span class="description">Shared publicly - #{commentary.date}</span>
                                 </div>
                                 <!-- /.user-block -->
                                 <p>

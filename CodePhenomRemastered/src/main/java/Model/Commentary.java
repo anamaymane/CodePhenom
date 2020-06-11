@@ -6,9 +6,19 @@ import java.sql.Timestamp;
 @Embeddable
 public class Commentary {
 
+    public Commentary(){
+
+    }
+
     private String username;
     private Timestamp date;
     private String content;
+
+    public Commentary(String username,Timestamp date, String content){
+        this.username =username;
+        this.date = date;
+        this.content =content;
+    }
 
     public String getUsername() {
         return this.username;
