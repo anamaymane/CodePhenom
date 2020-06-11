@@ -50,7 +50,7 @@ public class ProblemSetRedirection extends HttpServlet {
             }
 
         } catch(Exception e){
-
+            System.out.println(e.getMessage());
         }
     }
 

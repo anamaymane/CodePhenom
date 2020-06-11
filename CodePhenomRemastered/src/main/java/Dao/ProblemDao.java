@@ -62,6 +62,22 @@ public class ProblemDao {
         return problems;
     }
 
+    public Problem getProblemById(Long id) throws ClassNotFoundException {
+
+        entityManagerFactory = HibernateOGMUtil.setUpEntityManagerFactory();
+
+        entityManager = entityManagerFactory.createEntityManager();
+
+        entityManager.getTransaction().begin();
+
+        String query = "FROM Problem as h where problemId = :id";
+        Problem problem = entityManager.createQuery( query , Problem.class )
+                .setParameter("id",id)
+                .getSingleResult();
+
+        return problem;
+    }
+
     public List<String> getProblemsCategories() throws ClassNotFoundException {
 
         entityManagerFactory = HibernateOGMUtil.setUpEntityManagerFactory();

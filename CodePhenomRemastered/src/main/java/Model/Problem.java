@@ -160,11 +160,6 @@ public class Problem {
 
 }
 
-@Embeddable
-class Commentary {
 
-    String  username;
-    Timestamp date;
-    String content;
-}
+
 

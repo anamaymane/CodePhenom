@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<body class="bg-theme bg-theme1">
+
+<div id="header">
+    <ui:insert name="header">
+        <ui:include src="components/header.xhtml"/>
+    </ui:insert>
+</div>
+
+<div id="navbar">
+    <ui:insert name="navbar">
+        <ui:include src="components/navbarUser.xhtml"/>
+    </ui:insert>
+</div>
+
+<div class="clearfix"></div>
+
+
+<div class="content-wrapper ">
+    <div class="container-fluid"
+         style="margin-bottom: 60px; margin-top: 35px;">
+        <div class="row">
+
+            <div class="col-lg-9">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title"><h:outputText value="#{requestScope['problem'].name}" escape="false"/>
+                        </h3>
+
+                        <div class="card-tools">
+                            Difficulty : <span class="right badge badge-danger"><h:outputText
+                                value="#{requestScope['problem'].difficulty}" escape="false"/></span>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body p-0" style="margin-left: 25px">
+                        <div class="mailbox-read-message">
+                            <p><h:outputText value="#{requestScope['problem'].problemText}" escape="false"/></p>
+                        </div>
+                        <!-- /.mailbox-read-message -->
+                    </div>
+                </div>
+                <!-- /.card -->
+            </div>
+            <div class="col-lg-3 align-self-center">
+                <div class="row text-center  align-self-center">
+                    <div class="col-lg-12">
+
+                        <div>
+                            <c:choose>
+                                <c:when test="#{sessionBean.getSession() != null}">
+
+                                    <a class="btn btn-secondary"
+                                       href="#">
+                                        <i class="fa fa-paper-plane"></i>&#160; Submit solution
+                                    </a>
+                                </c:when>
+                                <c:otherwise>
+
+                                    <a class="btn btn-secondary" href="./signPage"> <i
+                                            class="fa fa-paper-plane"></i>&#160; Submit solution
+                                    </a>
+                                </c:otherwise>
+                            </c:choose>
+                        </div>
+                        <br/>
+                        <div>
+                            <a class="btn btn-primary"
+                               href="#"> <i
+                                    class="fa fa-eye"></i>&#160; View submission
+                            </a>
+                        </div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center" style="margin-top: 60px">
+            <div class="col-lg-12 text-center">
+                <c:choose>
+                    <c:when test="#{sessionBean.getSession() != null}">
+
+                        <a class="btn btn-warning btn-sm "
+                           href="#"><i
+                                class="fa fa-eye"></i>&#160;View personnal submission</a>
+                    </c:when>
+                    <c:otherwise>
+
+                        <a class="btn btn-warning btn-sm" href="./signPage"><i
+                                class="fas fa-eye"></i>&#160;View personnal submission</a>
+                    </c:otherwise>
+                </c:choose>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="content-wrapper ">
+    <div class="container-fluid" id="jar">
+        <div class="row">
+            <div class="col-12">
+                <div style="margin-top: 20px; margin-bottom: 40px;">
+                    <h4>Commentaries</h4>
+                </div>
+                <div>
+                    <nav>
+                        <ul class="pagination justify-content-center pagination-sm">
+                        </ul>
+                    </nav>
+                </div>
+                <div class="card" style="padding: 40px">
+                    <form method="post" action="./SendComment">
+                        <div class="post">
+                            <c:choose>
+                                <c:when test="#{sessionBean.getSession() != null}">
+
+                                    <h:inputText type="hidden" id="custId" name="username"
+                                                 value="#{sessionBean.getSession().getAttribute('username')}"/>
+                                    <h:inputText
+                                            type="hidden" id="custId1" name="id"
+                                            value="#{requestScope['problem'].problemId}"/>
+                                </c:when>
+
+                            </c:choose>
+
+                            <div class="user-block">
+                                <c:choose>
+                                    <c:when test="#{sessionBean.getSession() != null}">
+
+                                        <h:graphicImage class="img-circle img-bordered-sm"
+                                                        value="img/users/#{sessionBean.getSession().getAttribute('username')}"
+                                                        alt="user image"/>
+                                    </c:when>
+                                    <c:otherwise>
+
+                                        <img class="img-circle img-bordered-sm"
+                                             src="img/users/default_user_pic" alt="user image"/>
+
+                                    </c:otherwise>
+                                </c:choose>
+
+
+                                <span class="username">
+                                     <c:choose>
+                    <c:when test="#{sessionBean.getSession() != null}">
+                                   <a href="#">#{sessionBean.getSession().getAttribute('username')}</a>
+                                        </c:when>
+                                         <c:otherwise>
+                                            <a href="#">guest</a>
+                                            </c:otherwise>
+                                     </c:choose>
+
+
+									</span>
+                            </div>
+                            <!-- /.user-block -->
+                            <p>
+									<textarea class="form-control"
+                                              placeholder="Write your commentary here" name="content"
+                                              required=""></textarea>
+                            </p>
+                            <div class="text-center">
+                                <c:choose>
+                                <c:when test="#{sessionBean.getSession() != null}">
+                                <button type="submit"
+                                        class="btn btn-warning btn-sm ">
+                                    <i class="fas fa-comments"></i> Comment
+                                </button>
+                                </c:when>
+                                <c:otherwise>
+
+                                <a class="btn btn-sm btn-warning" href="./signPage"><i
+                                        class="fas fa-comments"></i> Comment</a>
+
+                                </c:otherwise>
+                                </c:choose>
+
+                            </div>
+                            <hr/>
+                        </div>
+                    </form>
+                    <ui:repeat value="#{requestScope['problem'].commentaries}" var="commentary">
+
+                    <div class="row content1 container-fluid">
+                        <div class="col-lg-12">
+                            <div class="post">
+                                <div class="user-block">
+                                    <h:graphicImage class="img-circle img-bordered-sm"
+                                         value="img/users/#{commentary.username}"
+                                    alt="user image"/> <span class="username"> <a
+                                        href="#">#{commentary.username}</a>
+										</span> <span class="description">Shared publicly - #{commentary.date}</span>
+                                </div>
+                                <!-- /.user-block -->
+                                <p>
+                                    #{commentary.content}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    </ui:repeat>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+
+<ui:insert name="footer">
+    <ui:include src="components/footerUser.xhtml"/>
+</ui:insert>
+
+
+</html>
+

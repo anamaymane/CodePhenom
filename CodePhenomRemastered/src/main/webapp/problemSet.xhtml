@@ -22,7 +22,6 @@
 <div class="clearfix"></div>
 
 
-
 <div class="content-wrapper ">
     <div class="container-fluid">
         <div class="row">
@@ -45,7 +44,8 @@
                                 </div>
                                 <div class="col">
                                     <button type="submit" class="btn btn-warning">Search
-                                        by difficulty</button>
+                                        by difficulty
+                                    </button>
                                 </div>
                             </div>
 
@@ -60,7 +60,7 @@
                                             <option></option>
                                             <ui:repeat value="#{requestScope['categories']}" var="category">
 
-                                            <option><h:outputText value="#{category}"/></option>
+                                                <option><h:outputText value="#{category}"/></option>
 
                                             </ui:repeat>>
 
@@ -70,7 +70,8 @@
 
                                 <div class="col">
                                     <button type="submit" class="btn btn-warning">Search
-                                        by category</button>
+                                        by category
+                                    </button>
                                 </div>
                             </div>
 
@@ -89,20 +90,26 @@
                             </thead>
                             <tbody>
                             <ui:repeat value="#{requestScope['problemList']}" var="problem">
-                            <tr>
-                                <td><h:outputText value="#{problem.problemId}"/></td>
-                                <td><h:outputText value="#{problem.name}"/></td>
-                                <td><h:outputText value="#{problem.type}"/></td>
-                                <td><h:outputText value="#{problem.difficulty}"/></td>
-                                <td><h:outputText value="#{problem.solved}"/></td>
-                            </tr>
+                                <tr>
+
+                                    <td><h:outputText value="#{problem.problemId}"/></td>
+                                    <td>
+                                         <h:outputLink value="./problemPageRedirection?id=#{problem.problemId}">
+                                           <h:outputText value="#{problem.name}"/>
+                                         </h:outputLink>
+                                    </td>
+                                    <td><h:outputText value="#{problem.type}"/></td>
+                                    <td><h:outputText value="#{problem.difficulty}"/></td>
+                                    <td><h:outputText value="#{problem.solved}"/></td>
+                                </tr>
                             </ui:repeat>
-                            </tbody></table>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-</div>
+    </div>
 </div>
 </body>
 
