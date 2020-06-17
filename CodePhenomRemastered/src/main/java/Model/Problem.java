@@ -12,7 +12,9 @@ public class Problem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
-    private Long problemId;
+    private Long id;
+
+    private String problemId;
 
     private String name;
 
@@ -34,24 +36,31 @@ public class Problem {
 
     private int solved;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getProblemId() {
+        return problemId;
+    }
+
+    public void setProblemId(String problemId) {
+        this.problemId = problemId;
+    }
+
     @ElementCollection
     private List<Commentary> commentaries = new ArrayList<Commentary>();
-
-    @OneToMany(mappedBy = "problem")
-    private List<Submission> submissions = new ArrayList<Submission>();
 
     @OneToMany(mappedBy = "problem")
     private List<TestCase> testCases = new ArrayList<TestCase>();
 
 
 
-    public Long getProblemId() {
-        return problemId;
-    }
 
-    public void setProblemId(Long problemId) {
-        this.problemId = problemId;
-    }
 
     public String getName() {
         return name;
@@ -141,13 +150,6 @@ public class Problem {
         this.commentaries = commentaries;
     }
 
-    public List<Submission> getSubmissions() {
-        return submissions;
-    }
-
-    public void setSubmissions(List<Submission> submissions) {
-        this.submissions = submissions;
-    }
 
     public List<TestCase> getTestCases() {
         return testCases;

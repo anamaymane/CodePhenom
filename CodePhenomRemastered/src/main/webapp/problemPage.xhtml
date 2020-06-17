@@ -72,10 +72,13 @@
                         </div>
                         <br/>
                         <div>
-                            <a class="btn btn-primary"
-                               href="#"> <i
+                            <form method="post" action="./viewSubmission">
+                                <input name="problemId" type="hidden" value="#{requestScope['problem'].problemId}"/>
+                                <button class="btn btn-primary"
+                               type="submit"> <i
                                     class="fa fa-eye"></i>&#160; View submission
-                            </a>
+                            </button>
+                            </form>
                         </div>
                         <div></div>
                     </div>
@@ -85,19 +88,21 @@
 
         <div class="row justify-content-center" style="margin-top: 60px">
             <div class="col-lg-12 text-center">
+                <form method="post" action="./viewPersonnalSubmission">
                 <c:choose>
                     <c:when test="#{sessionBean.getSession() != null}">
-
-                        <a class="btn btn-warning btn-sm "
-                           href="#"><i
-                                class="fa fa-eye"></i>&#160;View personnal submission</a>
+                        <input name="problemId" type="hidden" value="#{requestScope['problem'].problemId}"/>
+                        <button class="btn btn-warning btn-sm "
+                           type="submit"><i
+                                class="fa fa-eye"></i>&#160;View personnal submission</button>
                     </c:when>
                     <c:otherwise>
 
-                        <a class="btn btn-warning btn-sm" href="./signPage"><i
+                        <a class="btn btn-warning btn-sm" href="./signIn"><i
                                 class="fas fa-eye"></i>&#160;View personnal submission</a>
                     </c:otherwise>
                 </c:choose>
+                </form>
             </div>
         </div>
 
@@ -127,7 +132,7 @@
                                                  value='#{sessionBean.getSession().getAttribute("username")}'/>
                                     <input
                                             type="hidden" id="custId1" name="id"
-                                            value="#{requestScope['problem'].problemId}"/>
+                                            value="#{requestScope['problem'].id}"/>
                                 </c:when>
 
                             </c:choose>

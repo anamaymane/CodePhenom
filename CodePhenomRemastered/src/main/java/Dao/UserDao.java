@@ -1,10 +1,7 @@
 package Dao;
 
 import DatabasePackage.HibernateOGMUtil;
-import Model.Commentary;
-import Model.Message;
-import Model.Problem;
-import Model.User;
+import Model.*;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
@@ -206,5 +203,38 @@ public class UserDao {
             }
         }
         return 0;
+    }
+
+    public List<Submission> getPersonnalSubmission(String username, String problemId) throws ClassNotFoundException {
+
+        entityManagerFactory = HibernateOGMUtil.setUpEntityManagerFactory();
+
+        entityManager = entityManagerFactory.createEntityManager();
+
+        entityManager.getTransaction().begin();
+
+        String query = "FROM Submission as h where username = :user or problemId = :pID order by dateSubmission DESC";
+        List<Submission> submissions = entityManager.createQuery( query , Submission.class )
+                .setParameter("user",username)
+                .setParameter("pID",problemId)
+                .getResultList();
+
+        return submissions;
+    }
+
+    public List<Submission> getSubmission(String problemId) throws ClassNotFoundException {
+
+        entityManagerFactory = HibernateOGMUtil.setUpEntityManagerFactory();
+
+        entityManager = entityManagerFactory.createEntityManager();
+
+        entityManager.getTransaction().begin();
+
+        String query = "FROM Submission as h where problemId = :pID order by dateSubmission DESC";
+        List<Submission> submissions = entityManager.createQuery( query , Submission.class )
+                .setParameter("pID",problemId)
+                .getResultList();
+        System.out.println("submissions size is : " + submissions.size());
+        return submissions;
     }
 }

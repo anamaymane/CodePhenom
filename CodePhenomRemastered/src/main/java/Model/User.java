@@ -56,9 +56,6 @@ public class User {
 
     private String password;
 
-    @OneToMany(mappedBy = "user")
-    private List<Submission> submissions = new ArrayList<Submission>();
-
     public Long getUserId() {
         return userId;
     }
@@ -129,14 +126,6 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public List<Submission> getSubmissions() {
-        return submissions;
-    }
-
-    public void setSubmissions(List<Submission> submissions) {
-        this.submissions = submissions;
     }
 
 

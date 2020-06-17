@@ -92,9 +92,9 @@
                             <ui:repeat value="#{requestScope['problemList']}" var="problem">
                                 <tr>
 
-                                    <td><h:outputText value="#{problem.problemId}"/></td>
+                                    <td><h:outputText value="#{problem.id}"/></td>
                                     <td>
-                                         <h:outputLink value="./problemPageRedirection?id=#{problem.problemId}">
+                                         <h:outputLink value="./problemPageRedirection?id=#{problem.id}">
                                            <h:outputText value="#{problem.name}"/>
                                          </h:outputLink>
                                     </td>

@@ -12,13 +12,11 @@ public class Submission {
 
     private Long submissionId;
 
-    @ManyToOne
-    private Problem problem;
+    private String problemId;
 
     private String codeSource;
 
-    @ManyToOne
-    private User user;
+    private String username;
 
     private Timestamp dateSubmission;
 
@@ -42,13 +40,6 @@ public class Submission {
         this.submissionId = submissionId;
     }
 
-    public Problem getProblem() {
-        return problem;
-    }
-
-    public void setProblem(Problem problem) {
-        this.problem = problem;
-    }
 
     public String getCodeSource() {
         return codeSource;
@@ -58,13 +49,6 @@ public class Submission {
         this.codeSource = codeSource;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     public Timestamp getDateSubmission() {
         return dateSubmission;
@@ -120,5 +104,21 @@ public class Submission {
 
     public void setTotalVerdict(String totalVerdict) {
         this.totalVerdict = totalVerdict;
+    }
+
+    public String getProblemId() {
+        return problemId;
+    }
+
+    public void setProblemId(String problemId) {
+        this.problemId = problemId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

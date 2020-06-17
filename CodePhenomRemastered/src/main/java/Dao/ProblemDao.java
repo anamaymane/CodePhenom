@@ -70,7 +70,7 @@ public class ProblemDao {
 
         entityManager.getTransaction().begin();
 
-        String query = "FROM Problem as h where problemId = :id";
+        String query = "FROM Problem as h where id = :id";
         Problem problem = entityManager.createQuery( query , Problem.class )
                 .setParameter("id",id)
                 .getSingleResult();
@@ -120,7 +120,7 @@ public class ProblemDao {
 
         entityManager.getTransaction().begin();
 
-        String query = "FROM Problem as h where problemId = :problemId";
+        String query = "FROM Problem as h where id = :problemId";
 
         Problem problem = entityManager.createQuery( query , Problem.class )
                 .setParameter("problemId",problemId)
