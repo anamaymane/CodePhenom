@@ -1,5 +1,6 @@
 package Session;
 
+import javax.annotation.PreDestroy;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -12,7 +13,7 @@ import java.io.Serializable;
 @ApplicationScoped
 public class SessionBean implements Serializable {
 
-    private  HttpSession session = null;
+    public static HttpSession session = null;
 
     public HttpSession getSession() {
         if(session == null) {
@@ -21,8 +22,5 @@ public class SessionBean implements Serializable {
         }
         return (HttpSession) session;
     }
-
-
-
 
 }

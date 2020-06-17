@@ -13,10 +13,7 @@ import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 import static com.mongodb.client.model.Filters.*;
 
@@ -78,6 +75,8 @@ public class ProblemDao {
                 .setParameter("id",id)
                 .getSingleResult();
 
+        Collections.sort(problem.getCommentaries(), new CommentariesSort());
+
         return problem;
     }
 
@@ -134,5 +133,18 @@ public class ProblemDao {
         entityManager.getTransaction().commit();
 
         HibernateOGMUtil.closeEntityManagerFactory(entityManagerFactory);
+    }
+}
+
+class CommentariesSort implements Comparator<Commentary> {
+
+
+
+    public int compare(Commentary a, Commentary b) {
+        if (a.getDate().getTime() < b.getDate().getTime()) {
+            return 1;
+        } else {
+            return -1;
+        }
     }
 }

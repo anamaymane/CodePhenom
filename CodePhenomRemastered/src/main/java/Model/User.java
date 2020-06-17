@@ -59,13 +59,6 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Submission> submissions = new ArrayList<Submission>();
 
-    @OneToMany(mappedBy = "sender")
-    private List<Message> messagesSent = new ArrayList<Message>();
-
-    @OneToMany(mappedBy = "receiver")
-    private List<Message> messagedReceived = new ArrayList<Message>();
-
-
     public Long getUserId() {
         return userId;
     }
@@ -146,19 +139,5 @@ public class User {
         this.submissions = submissions;
     }
 
-    public List<Message> getMessagesSent() {
-        return messagesSent;
-    }
 
-    public void setMessagesSent(List<Message> messagesSent) {
-        this.messagesSent = messagesSent;
-    }
-
-    public List<Message> getMessagedReceived() {
-        return messagedReceived;
-    }
-
-    public void setMessagedReceived(List<Message> messagedReceived) {
-        this.messagedReceived = messagedReceived;
-    }
 }

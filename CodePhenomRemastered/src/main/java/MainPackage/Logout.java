@@ -20,7 +20,7 @@ public class Logout extends HttpServlet {
         HttpSession session = request.getSession(false);
         if(session != null) {
             session.invalidate();
-            session = null;
+            new SessionBean().session = null;
         }
         request.getRequestDispatcher("/index.xhtml").forward(request, response);
     }

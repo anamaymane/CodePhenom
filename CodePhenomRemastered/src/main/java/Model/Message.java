@@ -6,6 +6,20 @@ import java.sql.Timestamp;
 @Entity
 public class Message {
 
+    public Message(){
+
+    }
+
+    public Message(String receiver, String sender, String content, String object , Timestamp date){
+
+        this.receiver = receiver;
+        this.sender = sender;
+        this.content = content;
+        this.object = object;
+        this.date = date;
+
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long messageId;
@@ -16,11 +30,9 @@ public class Message {
 
     private Timestamp date;
 
-    @ManyToOne
-    private User sender;
+    private String sender;
 
-    @ManyToOne
-    private User receiver;
+    private String receiver;
 
     public Long getMessageId() {
         return messageId;
@@ -54,19 +66,19 @@ public class Message {
         this.date = date;
     }
 
-    public User getSender() {
+    public String getSender() {
         return sender;
     }
 
-    public void setSender(User sender) {
+    public void setSender(String sender) {
         this.sender = sender;
     }
 
-    public User getReceiver() {
+    public String getReceiver() {
         return receiver;
     }
 
-    public void setReceiver(User receiver) {
+    public void setReceiver(String receiver) {
         this.receiver = receiver;
     }
 }

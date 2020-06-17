@@ -132,18 +132,18 @@
 
                             </c:choose>
 
-                            <div class="user-block">
+                            <div class="user-block" style="margin-bottom: 20px">
 
                                 <c:choose>
                                     <c:when test="#{sessionBean.getSession() != null}">
 
-                                        <h:graphicImage class="product-img rounded-circle"
+                                        <h:graphicImage class="product-img img-circle"
                                                         value='img/users/#{sessionBean.getSession().getAttribute("username")}'
                                                         alt="user image"/>
                                     </c:when>
                                     <c:otherwise>
 
-                                        <img class="product-img rounded-circle"
+                                        <img class="product-img img-circle"
                                              src="img/users/default_user_pic" alt="user image"/>
 
                                     </c:otherwise>
@@ -191,17 +191,17 @@
                     </form>
                     <ui:repeat value="#{requestScope['problem'].commentaries}" var="commentary">
 
-                    <div class="row content1 container-fluid">
+                    <div class="row content1 container-fluid" style="margin-bottom: 20px">
                         <div class="col-lg-12">
                             <div class="post">
-                                <div class="user-block">
-                                    <h:graphicImage class="product-img rounded-circle"
+                                <div class="user-block" style="margin-bottom: 20px">
+                                    <h:graphicImage class="product-img img-circle"
                                          value="img/users/#{commentary.username}"
                                     alt="user image"/>
                                     <span class="username"> <a
                                         href="#">#{commentary.username}</a>
 										</span>
-                                    <span class="description">Shared publicly - #{commentary.date}</span>
+                                    <span class="description"><small>#{commentary.date}</small></span>
                                 </div>
                                 <!-- /.user-block -->
                                 <p>
@@ -210,6 +210,7 @@
                             </div>
                         </div>
                     </div>
+                        <hr/>
                     </ui:repeat>
 
                 </div>
