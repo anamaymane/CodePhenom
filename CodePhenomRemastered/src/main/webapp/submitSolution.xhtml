@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<body class="bg-theme bg-theme1">
+
+<div id="header">
+    <ui:insert name="header">
+        <ui:include src="components/header.xhtml"/>
+    </ui:insert>
+</div>
+
+<div id="navbar">
+    <ui:insert name="navbar">
+        <ui:include src="components/navbarUser.xhtml"/>
+    </ui:insert>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Submission page</h1>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="offset-lg-2 col-lg-8 card">
+                    <form role="form" method="post" action="./SendFinalSolution">
+                        <input type="hidden"
+                               value="#{sessionBean.session.getAttribute('username')}"
+                        name="username"/>
+
+                        <input type="hidden"
+                                                value="#{requestScope['problemId']}"
+                        name="problemId"/>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Choose a programming language</label> <select
+                                    class="form-control" name="programmingLanguage" required ="">
+                                <option></option>
+                                <ui:repeat value="#{requestScope['languagesName']}" var="languageName">
+                                    <option><h:outputText value="#{languageName.name}"/></option>
+                                </ui:repeat>
+                            </select>
+                            </div>
+                            <div>
+                                <label>Write your code here</label>
+                                <div>
+                                    <div>
+									<textarea id="codeeditor" style="text-align: left !important;"
+                                              name="codeSource"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center" style="margin-top: 40px">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+</body>
+
+
+<ui:insert name="footer">
+    <ui:include src="components/footerUser.xhtml"/>
+</ui:insert>
+
+
+</html>
+

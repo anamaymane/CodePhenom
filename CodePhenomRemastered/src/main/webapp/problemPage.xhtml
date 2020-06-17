@@ -58,13 +58,13 @@
                                 <c:when test="#{sessionBean.getSession() != null}">
 
                                     <a class="btn btn-secondary"
-                                       href="#">
+                                       href="./submitSolution?username=#{sessionBean.getSession().getAttribute('username')}&amp;problemId=#{requestScope['problem'].problemId}">
                                         <i class="fa fa-paper-plane"></i>&#160; Submit solution
                                     </a>
+
                                 </c:when>
                                 <c:otherwise>
-
-                                    <a class="btn btn-secondary" href="./signPage"> <i
+                                    <a class="btn btn-secondary" href="./signIn"> <i
                                             class="fa fa-paper-plane"></i>&#160; Submit solution
                                     </a>
                                 </c:otherwise>

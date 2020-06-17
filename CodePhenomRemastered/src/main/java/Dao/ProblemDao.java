@@ -1,6 +1,7 @@
 package Dao;
 
 import DatabasePackage.HibernateOGMUtil;
+import Model.AvailableLanguage;
 import Model.Commentary;
 import Model.Problem;
 import Model.User;
@@ -133,6 +134,27 @@ public class ProblemDao {
         entityManager.getTransaction().commit();
 
         HibernateOGMUtil.closeEntityManagerFactory(entityManagerFactory);
+    }
+
+    public List<AvailableLanguage> getAvailableLanguages() throws ClassNotFoundException {
+
+        entityManagerFactory = HibernateOGMUtil.setUpEntityManagerFactory();
+
+        entityManager = entityManagerFactory.createEntityManager();
+
+        entityManager.getTransaction().begin();
+
+        String query = "FROM AvailableLanguage as h";
+
+        List<AvailableLanguage> als = entityManager.createQuery( query , AvailableLanguage.class)
+                .getResultList();
+
+
+        entityManager.getTransaction().commit();
+
+        HibernateOGMUtil.closeEntityManagerFactory(entityManagerFactory);
+
+        return als;
     }
 }
 

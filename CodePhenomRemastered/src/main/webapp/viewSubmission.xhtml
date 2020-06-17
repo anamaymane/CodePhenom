@@ -121,33 +121,7 @@
     <ui:include src="components/footerUser.xhtml"/>
 </ui:insert>
 
-<script
-        src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.js"></script>
-<script
-        src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/mode/javascript/javascript.js"></script>
-<script>
-    $(function() {
-        $('#example2').DataTable({
-            "paging" : true,
-            "lengthChange" : false,
-            "searching" : false,
-            "ordering" : false,
-            "info" : false,
-            "autoWidth" : false,
-        });
-    });
-</script>
-<script>
-    var x = document.getElementsByClassName("codeeditor");
-    var i, editor;
-    for (i = 0; i &lt; x.length; i++) {
-        x[i].click();
-        editor = CodeMirror.fromTextArea(x[i]);
-        editor.setOption("theme", "dracula");
-        editor.setOption("lineNumbers", "true");
-        editor.setOption("readOnly", "true");
-    }
-</script>
+
 
 
 </html>
