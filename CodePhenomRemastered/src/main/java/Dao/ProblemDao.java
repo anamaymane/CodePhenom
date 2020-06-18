@@ -5,7 +5,10 @@ import Model.AvailableLanguage;
 import Model.Commentary;
 import Model.Problem;
 import Model.User;
-import com.mongodb.client.model.Filters;
+import com.mongodb.MongoClient;
+import com.mongodb.client.AggregateIterable;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.*;
 import org.bson.Document;
 
 import javax.faces.bean.ApplicationScoped;
@@ -136,24 +139,25 @@ public class ProblemDao {
         HibernateOGMUtil.closeEntityManagerFactory(entityManagerFactory);
     }
 
-    public List<Object[]> getProblemsCategoriesCount() throws ClassNotFoundException {
+    public ArrayList<HashMap<String,String>> getProblemsCategoriesCount() throws ClassNotFoundException {
 
-        entityManagerFactory = HibernateOGMUtil.setUpEntityManagerFactory();
+        MongoClient mongoClient = new MongoClient();
 
-        entityManager = entityManagerFactory.createEntityManager();
+        MongoDatabase database = mongoClient.getDatabase("test");
 
-        entityManager.getTransaction().begin();
-
-        String query = "select h.type, count(*) FROM Problem as h group by h.type";
-
-        List<Object[]> types = (List<Object[]> ) entityManager.createQuery( query , Object[].class )
-                .getResultList();
-
-        entityManager.getTransaction().commit();
-
-        HibernateOGMUtil.closeEntityManagerFactory(entityManagerFactory);
-
-        return types;
+        AggregateIterable<Document> documents = database.getCollection("problem").aggregate(
+                Arrays.asList(Aggregates.addFields(new Field("count",1)),
+                        Aggregates.group("$type", Accumulators.sum("total", "$count")),
+                        Aggregates.sort(Sorts.ascending("type")))
+        );
+        ArrayList<HashMap<String,String>> listDoc = new ArrayList<HashMap<String,String>>();
+        for (Document doc : documents) {
+            HashMap<String,String> temp = new HashMap<String,String>();
+            temp.put("category",doc.get("_id").toString());
+            temp.put("count",doc.get("total").toString());
+            listDoc.add(temp);
+        }
+        return listDoc;
 
     }
 

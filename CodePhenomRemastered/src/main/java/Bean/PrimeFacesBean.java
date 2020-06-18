@@ -12,6 +12,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -42,14 +43,13 @@ public class PrimeFacesBean implements Serializable {
     private void  createPieModel() {
         try {
             model = new PieChartModel();
-            //List<Object> categories = new ProblemDao().getProblemsCategories();
-            model.set("Java", 62);//jobs in thousands
-            model.set("Python", 46);
-            model.set("JavaScript", 38);
-            model.set("C++", 31);
-            model.set("C#", 27);
-            model.set("PHP", 14);
-            model.set("Perl", 14);
+            ArrayList<HashMap<String,String>> types = new ProblemDao().getProblemsCategoriesCount();
+
+            for(HashMap<String,String> type: types){
+
+                model.set(type.get("category"), Integer.valueOf(type.get("count")));
+            }
+
 
             //followings are some optional customizations:
             //set title
