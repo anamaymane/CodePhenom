@@ -136,6 +136,27 @@ public class ProblemDao {
         HibernateOGMUtil.closeEntityManagerFactory(entityManagerFactory);
     }
 
+    public List<Object[]> getProblemsCategoriesCount() throws ClassNotFoundException {
+
+        entityManagerFactory = HibernateOGMUtil.setUpEntityManagerFactory();
+
+        entityManager = entityManagerFactory.createEntityManager();
+
+        entityManager.getTransaction().begin();
+
+        String query = "select h.type, count(*) FROM Problem as h group by h.type";
+
+        List<Object[]> types = (List<Object[]> ) entityManager.createQuery( query , Object[].class )
+                .getResultList();
+
+        entityManager.getTransaction().commit();
+
+        HibernateOGMUtil.closeEntityManagerFactory(entityManagerFactory);
+
+        return types;
+
+    }
+
     public List<AvailableLanguage> getAvailableLanguages() throws ClassNotFoundException {
 
         entityManagerFactory = HibernateOGMUtil.setUpEntityManagerFactory();
