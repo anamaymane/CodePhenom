@@ -116,12 +116,7 @@
                 <div style="margin-top: 20px; margin-bottom: 40px;">
                     <h4>Commentaries</h4>
                 </div>
-                <div>
-                    <nav>
-                        <ul class="pagination justify-content-center pagination-sm">
-                        </ul>
-                    </nav>
-                </div>
+
                 <div class="card" style="padding: 40px">
                     <form method="post" action="./sendComment">
                         <div class="post">
@@ -191,13 +186,15 @@
                                 </c:choose>
 
                             </div>
-                            <hr/>
+
                         </div>
                     </form>
+
                     <ui:repeat value="#{requestScope['problem'].commentaries}" var="commentary">
 
                     <div class="row content1 container-fluid" style="margin-bottom: 20px">
                         <div class="col-lg-12">
+                            <hr/>
                             <div class="post">
                                 <div class="user-block" style="margin-bottom: 20px">
                                     <h:graphicImage class="product-img img-circle"
@@ -214,9 +211,17 @@
                                 </p>
                             </div>
                         </div>
+
                     </div>
-                        <hr/>
+
                     </ui:repeat>
+
+                    <div style="margin-bottom: 40px">
+                        <nav>
+                            <ul class="pagination justify-content-center pagination-sm">
+                            </ul>
+                        </nav>
+                    </div>
 
                 </div>
             </div>
@@ -230,6 +235,7 @@
     <ui:include src="components/footerUser.xhtml"/>
 </ui:insert>
 
+<script src="assets/js/jsPagination.js"></script>
 
 </html>
 

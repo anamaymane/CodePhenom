@@ -84,6 +84,16 @@
     <ui:include src="components/footerUser.xhtml"/>
 </ui:insert>
 
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.js"></script>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/mode/javascript/javascript.js"></script>
+<script>
+    var editor = CodeMirror.fromTextArea(document.getElementById('codeeditor'));
+    editor.setOption("theme", "dracula");
+    editor.setOption("lineNumbers", "true");
+</script>
+
 
 </html>
 

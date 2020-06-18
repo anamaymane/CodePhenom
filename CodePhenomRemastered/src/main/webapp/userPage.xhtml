@@ -32,21 +32,15 @@
             <div class="col-lg-4">
                 <div class="card profile-card-2">
                     <div class="card-img-block">
-                        <img class="img-fluid" src="https://via.placeholder.com/800x500" alt="Card image cap"/>
+                        <img class="img-fluid" src="https://media-exp1.licdn.com/dms/image/C561BAQGUPQZZTfTN5A/company-background_10000/0?e=2159024400&amp;v=beta&amp;t=a6joKAq7fQIHTBYSUlQFK7yc0fMZKcNhKkf-4ioIS-g" alt="Card image cap"/>
                     </div>
-                    <div class="card-body pt-5">
+                    <div class="card-body pt-5 text-center">
                         <h:graphicImage value="img/users/#{sessionBean.session.getAttribute('username')}"
                                         class="profile"
                                         alt="user avatar"/>
                         <h5 class="card-title"><h:outputText value="#{sessionBean.session.getAttribute('username')}"/>
                         </h5>
                         <p class="card-text"><h:outputText value="#{requestScope['description']}"/></p>
-                        <div class="icon-block">
-                            <a href="javascript:void();"><i class="fa fa-facebook bg-facebook text-white"></i></a>
-                            <a href="javascript:void();"> <i class="fa fa-twitter bg-twitter text-white"></i></a>
-                            <a href="javascript:void();"> <i
-                                    class="fa fa-google-plus bg-google-plus text-white"></i></a>
-                        </div>
                     </div>
 
                     <div class="card-body border-top border-light">
@@ -54,22 +48,21 @@
                             <div class="card-body justify-content-center">
                                 <strong><i class="zmdi zmdi-info"></i> Brief
                                     description about you</strong>
-                                <p class="text-muted">test</p>
+                                <br/>
+                                <strong><h:outputText value="#{requestScope['user'].description}"/></strong>
                             </div>
                         </div>
                         <hr/>
-                        <div class="media align-items-center">
+
                             <strong><i class="zmdi zmdi-group"></i>
                                 Programming languages used</strong>
-
-                            <p class="text-muted">
+                        <br/>
                                 <span class="tag tag-danger">UI Design</span> <span
                                     class="tag tag-success">Coding</span> <span
                                     class="tag tag-info">Javascript</span> <span
                                     class="tag tag-warning">PHP</span> <span
                                     class="tag tag-primary">Node.js</span>
-                            </p>
-                        </div>
+
                         <hr/>
                     </div>
                 </div>
@@ -109,7 +102,7 @@
                                             <div class="card-body p-0">
                                                 <div class="table-responsive mailbox-messages">
                                                     <div class="card-body">
-                                                        <table id="example2"  class="table table-bordered table-hover">
+                                                        <table  id="example2" class="container table table-bordered table-hover">
                                                             <thead>
                                                             <tr>
                                                                 <th>Sender</th>
@@ -121,7 +114,7 @@
                                                             </tr>
                                                             </thead>
                                                             <tbody>
-                                                            <ui:repeat value="#{requestScope['messageReceivedList']}"
+                                                            <ui:repeat id="jar" value="#{requestScope['messageReceivedList']}"
                                                                        var="message">
                                                                 <tr>
                                                                     <c:choose>
@@ -197,6 +190,12 @@
                                                             </ui:repeat>
                                                             </tbody>
                                                         </table>
+                                                        <div style="margin-bottom: 40px; margin-top: 25px">
+                                                            <nav>
+                                                                <ul class="pagination justify-content-center pagination-sm">
+                                                                </ul>
+                                                            </nav>
+                                                        </div>
                                                     </div>
                                                     <!-- /.table -->
                                                 </div>
@@ -357,6 +356,18 @@
     <ui:include src="components/footerUser.xhtml"/>
 </ui:insert>
 
+<script>
+    $(function() {
+        $('#example2').DataTable({
+            "paging" : true,
+            "lengthChange" : false,
+            "searching" : true,
+            "ordering" : false,
+            "info" : false,
+            "autoWidth" : false,
+        });
+    });
+</script>
 
 </html>
 

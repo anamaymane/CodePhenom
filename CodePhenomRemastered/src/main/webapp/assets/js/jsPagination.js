@@ -37,7 +37,8 @@ function getPageList(totalPages, page, maxLength) {
 $(function() {
     console.log("salam");
     // Number of items and limits the number of items per page
-    var numberOfItems = $("#jar .content").length;
+    var numberOfItems = $("#jar .content1").length;
+    console.log("number of item : " + numberOfItems);
     var limitPerPage = 2;
     // Total pages rounded upwards
     var totalPages = Math.ceil(numberOfItems / limitPerPage);
@@ -50,7 +51,7 @@ $(function() {
     function showPage(whichPage) {
         if (whichPage < 1 || whichPage > totalPages) return false;
         currentPage = whichPage;
-        $("#jar .content")
+        $("#jar .content1")
             .hide()
             .slice((currentPage - 1) * limitPerPage, currentPage * limitPerPage)
             .show();
@@ -112,7 +113,5 @@ $(function() {
     $("#previous-page").on("click", function() {
         return showPage(currentPage - 1);
     });
-    $(".pagination").on("click", function() {
-        $("html,body").animate({ scrollTop: 0 }, 0);
-    });
+
 });

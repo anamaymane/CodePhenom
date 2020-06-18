@@ -8,11 +8,14 @@
 
 <body class="bg-theme bg-theme1">
 
+
+
 <div id="header">
     <ui:insert name="header">
         <ui:include src="components/header.xhtml"/>
     </ui:insert>
 </div>
+
 
 <div id="navbar">
     <ui:insert name="navbar">
@@ -29,7 +32,7 @@
                 <div class="row row-group m-0">
                     <div class="col-12 col-lg-6 col-xl-4 border-light">
                         <div class="card-body">
-                            <h5 class="text-white mb-0">9526 <span class="float-right"><i
+                            <h5 class="text-white mb-0"><h:outputText value="#{problemDao.getProblemsCategoriesIntCount()}"/> <span class="float-right"><i
                                     class="fa fa-shopping-cart"></i></span></h5>
                             <div class="progress my-3" style="height:3px;">
                                 <div class="progress-bar" style="width:55%"></div>
@@ -100,47 +103,27 @@
         </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <p:chart type="pie" model="#{PrimeFacesBean.chartPieCategoryAvailable}" style="width:400px;height:300px"/>
+                    <p:chart styleClass="no_background" type="pie" model="#{PrimeFacesBean.chartPieCategoryAvailable}" style="width:400px;height:300px"/>
                 </div>
             </div>
         </div>
             <div class="col-lg-8">
                 <div class="card">
-                    <div class="card-body">
+                        <div class="container card-body"  style="margin-bottom: 20px">
+                            <p:carousel id="carousel" value="#{PrimeFacesBean.getAnnouncements()}"  var="announcement" numVisible="1" effect="easeInStrong" headerText="Latest announcements">
 
-                        <div class="container" id="jar" style="margin-bottom: 20px">
-                            <ui:repeat value="#{requestScope['announcements']}" var="announcement">
-                                <div class="row border border-secondary content">
-                                    <div class="card-body p-0 col-lg-12">
-                                        <div class="text-center">
-                                            <h4><h:outputText value="#{announcement.title}" escape="false"/></h4>
-                                        </div>
-                                        <div class="mailbox-read-info">
-                                            <h6>
-                                                    <span class="mailbox-read-time float-right"><h:outputText
-                                                            value="#{announcement.dateAnnouncement}"
-                                                            escape="false"/></span>
-                                            </h6>
-                                        </div>
-                                        <br/>
-                                        <div class="mailbox-read-message">
+                                    <p:tab title="#{announcement.title}">
+                                        <h:panelGrid columns="2" cellpadding="10">
                                             <h:outputText value="#{announcement.body}" escape="false"/>
-                                        </div>
-                                        <!-- /.mailbox-read-message -->
-                                    </div>
+                                        </h:panelGrid>
+                                    </p:tab>
 
-                                </div>
 
-                            </ui:repeat>
-                            <div style="margin-bottom: 40px">
-                                <nav>
-                                    <ul class="pagination justify-content-center pagination-sm">
-                                    </ul>
-                                </nav>
-                            </div>
+                            </p:carousel>
+
                         </div>
 
-                    </div>
+
                 </div>
 
             </div>
@@ -156,8 +139,12 @@
     <ui:include src="components/footerUser.xhtml"/>
 </ui:insert>
 
-<script src="assets/js/jsPagination.js"></script>
-
+<script>
+    $( document ).ready(function() {
+        var element = document.getElementById("carousel");
+        element.classList.add("no_background");
+    });
+</script>
 
 </html>
 

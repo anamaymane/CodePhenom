@@ -158,7 +158,20 @@ public class ProblemDao {
             listDoc.add(temp);
         }
         return listDoc;
+    }
 
+    public int getProblemsCategoriesIntCount() throws ClassNotFoundException {
+
+        entityManagerFactory = HibernateOGMUtil.setUpEntityManagerFactory();
+
+        entityManager = entityManagerFactory.createEntityManager();
+
+        entityManager.getTransaction().begin();
+
+        String query = "select distinct h.type FROM Problem as h ";
+        List<String> problems = entityManager.createQuery( query , String.class )
+                .getResultList();
+        return problems.size();
     }
 
     public List<AvailableLanguage> getAvailableLanguages() throws ClassNotFoundException {

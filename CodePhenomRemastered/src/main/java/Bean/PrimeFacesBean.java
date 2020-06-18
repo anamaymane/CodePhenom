@@ -4,8 +4,10 @@ package Bean;
 
 
 
+import Dao.AnnouncementDao;
 import Dao.ProblemDao;
 import Dao.UserDao;
+import Model.Announcement;
 import org.primefaces.model.chart.PieChartModel;
 
 import javax.annotation.PostConstruct;
@@ -40,6 +42,10 @@ public class PrimeFacesBean implements Serializable {
         return images;
     }
 
+    public List<Announcement> getAnnouncements() throws ClassNotFoundException {
+        return new AnnouncementDao().getAnnouncement();
+    }
+
     private void  createPieModel() {
         try {
             model = new PieChartModel();
@@ -53,7 +59,7 @@ public class PrimeFacesBean implements Serializable {
 
             //followings are some optional customizations:
             //set title
-            model.setTitle("2018 Jobs for top languages");
+            model.setTitle("Statistics about available problem categories in out website");
             //set legend position to 'e' (east), other values are 'w', 's' and 'n'
             model.setLegendPosition("e");
             //enable tooltips
@@ -64,8 +70,7 @@ public class PrimeFacesBean implements Serializable {
             model.setDataFormat("value");
             //format: %d for 'value', %s for 'label', %d%% for 'percent'
             model.setDataLabelFormatString("%dK");
-            //pie sector colors
-            model.setSeriesColors("aaf,afa,faa,ffa,aff,faf,ddd");
+
         }
         catch(Exception e){
             System.out.print(e.getMessage());

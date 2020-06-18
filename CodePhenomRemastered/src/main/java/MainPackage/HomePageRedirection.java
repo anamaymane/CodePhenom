@@ -20,8 +20,7 @@ public class HomePageRedirection extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             //new UserInsert().setUpEntityManagerFactoryAndPopulateTheDatastore();
-            List<Announcement> announcements = new AnnouncementDao().getAnnouncement();
-            request.setAttribute("announcements",announcements);
+
             request.getRequestDispatcher("/index.xhtml").forward(request, response);
         }
         catch(Exception e){
