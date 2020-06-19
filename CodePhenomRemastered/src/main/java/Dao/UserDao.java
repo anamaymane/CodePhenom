@@ -237,4 +237,22 @@ public class UserDao {
         System.out.println("submissions size is : " + submissions.size());
         return submissions;
     }
+
+    public List<String> listOfProgrammingLanguagesUsedPerUser(String username) throws ClassNotFoundException {
+
+        entityManagerFactory = HibernateOGMUtil.setUpEntityManagerFactory();
+
+        entityManager = entityManagerFactory.createEntityManager();
+
+        entityManager.getTransaction().begin();
+
+        String query = "select distinct languageName from  Submission as h where h.username = :user";
+        List<String> languages = entityManager.createQuery( query , String.class )
+                .setParameter("user",username)
+                .getResultList();
+
+        System.out.print("languages number : " + languages.size());
+        return languages;
+
+    }
 }

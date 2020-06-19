@@ -1,0 +1,13 @@
+{"_id":{"$numberInt":"0"},"sender":"aymane","receiver":"aym","content":"Ce message est de ma part, donc ca marche","date":{"$date":{"$numberLong":"1463587200000"}},"object":"Message d'inscription"}
+{"_id":{"$numberInt":"1"},"receiver":"aym","date":{"$date":{"$numberLong":"1400428800000"}},"content":"The Message (HTML) Sub-Tab allows you to define the message text and formatting for the Email Action. This sub-tab modifies the message that will be received by email recipients who receive HTML formatted email.  The Message (Text) Sub-Tab is used to modify the text and formatting of non-HTML message content.   To modify the HTML formatted message for a rule:  Ensure the Send Email Action is selected and then click the Message (HTML) Sub-Tab.","sender":"aya","object":"Message from your siester"}
+{"_id":{"$numberInt":"6"},"date":{"$date":{"$numberLong":"1592397386619"}},"receiver":"admin","sender":"aym","content":"this is my message","object":"test"}
+{"_id":{"$numberInt":"7"},"date":{"$date":{"$numberLong":"1592397668231"}},"receiver":"aya","sender":"aym","content":"moroccan rug","object":"object"}
+{"_id":{"$numberInt":"8"},"date":{"$date":{"$numberLong":"1592401568812"}},"receiver":"fdfd","sender":"aym","content":"ddfdf","object":"object"}
+{"_id":{"$numberInt":"9"},"date":{"$date":{"$numberLong":"1592401599722"}},"receiver":"admin","sender":"aym","content":"test test","object":"papa"}
+{"_id":{"$numberInt":"10"},"date":{"$date":{"$numberLong":"1592401654215"}},"receiver":"admin","sender":"aym","content":"message body","object":"test admin"}
+{"_id":{"$numberInt":"31"},"date":{"$date":{"$numberLong":"1592487723468"}},"receiver":"admin","sender":"aym","content":"","object":""}
+{"_id":{"$numberInt":"33"},"date":{"$date":{"$numberLong":"1592487836313"}},"receiver":"admin","sender":"aym","content":"","object":""}
+{"_id":{"$numberInt":"52"},"date":{"$date":{"$numberLong":"1592488775035"}},"receiver":"admin","sender":"aym","content":"test now","object":"object"}
+{"_id":{"$numberInt":"53"},"date":{"$date":{"$numberLong":"1592488822770"}},"receiver":"admin","sender":"aym","content":"test test","object":"aya"}
+{"_id":{"$numberInt":"54"},"date":{"$date":{"$numberLong":"1592493147244"}},"receiver":"admin","sender":"aym","content":"aaa","object":"object 1"}
+{"_id":{"$numberInt":"55"},"date":{"$date":{"$numberLong":"1592493196258"}},"receiver":"test","sender":"aym","content":"this is my message","object":"object 2"}

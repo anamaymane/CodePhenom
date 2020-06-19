@@ -9,7 +9,6 @@
 <body class="bg-theme bg-theme1">
 
 
-
 <div id="header">
     <ui:insert name="header">
         <ui:include src="components/header.xhtml"/>
@@ -103,14 +102,15 @@
         </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <p:chart styleClass="no_background" type="pie" model="#{PrimeFacesBean.chartPieCategoryAvailable}" style="width:400px;height:300px"/>
+                    <p:pieChart  type="pie" model="#{PrimeFacesBean.chartPieCategoryAvailable}"/>
+
                 </div>
             </div>
         </div>
             <div class="col-lg-8">
                 <div class="card">
                         <div class="container card-body"  style="margin-bottom: 20px">
-                            <p:carousel id="carousel" value="#{PrimeFacesBean.getAnnouncements()}"  var="announcement" numVisible="1" effect="easeInStrong" headerText="Latest announcements">
+                            <p:carousel  id="carousel" value="#{PrimeFacesBean.getAnnouncements()}"  var="announcement" numVisible="1" effect="easeInStrong" headerText="Latest announcements">
 
                                     <p:tab title="#{announcement.title}">
                                         <h:panelGrid columns="2" cellpadding="10">
@@ -120,7 +120,17 @@
 
 
                             </p:carousel>
-
+                            <h:outputStylesheet>
+                                .ui-carousel,
+                                .ui-carousel-header,
+                                .ui-carousel-header-title,
+                                .ui-carousel-page-links,
+                                .ui-carousel-page-link,
+                                .ui-carousel-item {
+                                    background:  transparent !important;
+                                    color:  white;
+                                }
+                            </h:outputStylesheet>
                         </div>
 
 

@@ -8,7 +8,10 @@ import Dao.AnnouncementDao;
 import Dao.ProblemDao;
 import Dao.UserDao;
 import Model.Announcement;
-import org.primefaces.model.chart.PieChartModel;
+import org.primefaces.model.charts.ChartData;
+import org.primefaces.model.charts.pie.PieChartDataSet;
+import org.primefaces.model.charts.pie.PieChartModel;
+
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -16,6 +19,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 @ManagedBean(name = "PrimeFacesBean")
@@ -23,6 +27,7 @@ public class PrimeFacesBean implements Serializable {
 
     private PieChartModel model;
     private List<String> images;
+    private List<String> usedProgrammingLanguages = new ArrayList<String>();
 
     @PostConstruct
     public void init(){
@@ -31,6 +36,17 @@ public class PrimeFacesBean implements Serializable {
             images.add("" + i);
         }
         createPieModel();
+
+    }
+
+    public List<String> languagesUsedByUser(String username){
+        try {
+            usedProgrammingLanguages = new UserDao().listOfProgrammingLanguagesUsedPerUser(username);
+        }
+        catch(Exception e){
+            System.out.print(e.getMessage());
+        }
+        return  usedProgrammingLanguages;
     }
 
     public PieChartModel getChartPieCategoryAvailable() {
@@ -49,27 +65,29 @@ public class PrimeFacesBean implements Serializable {
     private void  createPieModel() {
         try {
             model = new PieChartModel();
+            ChartData data = new ChartData();
+
             ArrayList<HashMap<String,String>> types = new ProblemDao().getProblemsCategoriesCount();
-
+            PieChartDataSet dataSet = new PieChartDataSet();
+            List<Number> values = new ArrayList<>();
+            List<String> bgColors = new ArrayList<>();
             for(HashMap<String,String> type: types){
-
-                model.set(type.get("category"), Integer.valueOf(type.get("count")));
+                int r = ThreadLocalRandom.current().nextInt(0, 255 + 1);
+                int g = ThreadLocalRandom.current().nextInt(0, 255 + 1);
+                int b = ThreadLocalRandom.current().nextInt(0, 255 + 1);
+                values.add(Integer.valueOf(type.get("count")));
+                bgColors.add("rgb(" + r + "," + g + "," + b + ")");
             }
+            dataSet.setBackgroundColor(bgColors);
+            dataSet.setData(values);
+            data.addChartDataSet(dataSet);
 
-
-            //followings are some optional customizations:
-            //set title
-            model.setTitle("Statistics about available problem categories in out website");
-            //set legend position to 'e' (east), other values are 'w', 's' and 'n'
-            model.setLegendPosition("e");
-            //enable tooltips
-            model.setShowDatatip(true);
-            //show labels inside pie chart
-            model.setShowDataLabels(true);
-            //show label text  as 'value' (numeric) , others are 'label', 'percent' (default). Only one can be used.
-            model.setDataFormat("value");
-            //format: %d for 'value', %s for 'label', %d%% for 'percent'
-            model.setDataLabelFormatString("%dK");
+            List<String> labels = new ArrayList<>();
+            for(HashMap<String,String> type: types){
+                labels.add(type.get("category"));
+            }
+            data.setLabels(labels);
+            model.setData(data);
 
         }
         catch(Exception e){

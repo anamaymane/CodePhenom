@@ -11,6 +11,10 @@
 <div id="header">
     <ui:insert name="header">
         <ui:include src="components/header.xhtml"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.css"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/theme/dracula.css"/>
     </ui:insert>
 </div>
 
@@ -121,7 +125,21 @@
     <ui:include src="components/footerUser.xhtml"/>
 </ui:insert>
 
-
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.js"></script>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/mode/javascript/javascript.js"></script>
+<h:outputScript>
+    var x = document.getElementsByClassName("codeeditor");
+    var i, editor;
+    for (i = 0; i &#60; x.length; i++) {
+        x[i].click();
+        editor = CodeMirror.fromTextArea(x[i]);
+        editor.setOption("theme", "dracula");
+        editor.setOption("lineNumbers", "true");
+        editor.setOption("readOnly", "true");
+    }
+</h:outputScript>
 
 
 </html>
