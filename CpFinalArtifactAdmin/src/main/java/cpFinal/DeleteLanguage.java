@@ -25,7 +25,7 @@ public class DeleteLanguage extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String LanguageId =(String)request.getParameter("id");
+		long LanguageId = Long.parseLong(request.getParameter("id"));
 		int res = DAO.deleteLanguage(LanguageId);
 		if (res == 1) {
 			response.sendRedirect("./addLanguage");

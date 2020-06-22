@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class DeleteTestCase extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public String TEST_CASES_PATH = "/home/aym/jee_workspace/CpFinalArtifactAdmin/src/main/webapp/";
+    public String TEST_CASES_PATH = "C:\\Users\\AIT RAMI\\github\\CodePhenomRemastered\\CpFinalArtifactAdmin\\src\\main\\webapp";
     /**
      * @see HttpServlet#HttpServlet()
      */

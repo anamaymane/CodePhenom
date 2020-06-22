@@ -289,6 +289,12 @@ public class DAO {
 		return list.size();
 	}
 
+	public static long getLanguageIdByName(String name) {
+		Iterator<org.bson.Document> cursor = null;
+		cursor = mongodbConnection.getCollection("AvailableLanguage").find(Filters.eq("name", name)).iterator();
+		return cursor.next().getLong("_id");
+	}
+
 	public static Iterator<org.bson.Document> announcement() {
 		Iterator<org.bson.Document> cursor = null;
 		cursor = mongodbConnection.getCollection("Announcement").find().sort(new BasicDBObject("dateAnnouncement", -1))
@@ -321,10 +327,10 @@ public class DAO {
 		return cursor;
 	}
 
-	public static int deleteLanguage(String id) {
+	public static int deleteLanguage(long id) {
 		try {
 			DeleteResult result = mongodbConnection.getCollection("AvailableLanguage")
-					.deleteOne(Filters.eq("_id", new ObjectId(id)));
+					.deleteOne(Filters.eq("_id", id));
 			if (result.wasAcknowledged()) {
 				return 1;
 			}

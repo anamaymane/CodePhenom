@@ -46,26 +46,27 @@ public class addUser extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// TODO Auto-generated method stub
+		long id = DAO.getMaxDocument("User") + 1;
 		String username = request.getParameter("username");
 		String email = request.getParameter("email");
 		String fullName = request.getParameter("fullName");
 		String password = request.getParameter("password");
-		Part filePart = request.getPart("fileName");
+		//Part filePart = request.getPart("fileName");
 		String description = "user Description";
 		String score = "0";
-	    InputStream fileContent = filePart.getInputStream();
-	    File targetFile = new File("/home/aym/jee_workspace/CpFinalArtifactAdmin/src/main/webapp/img/users/" + username);
-	    targetFile.createNewFile();
-	    FileUtils.copyInputStreamToFile(fileContent, targetFile);
+	    //InputStream fileContent = filePart.getInputStream();
+	    //File targetFile = new File("C:\\Users\\AIT RAMI\\github\\CodePhenomRemastered\\CpFinalArtifactAdmin\\src\\main\\webapp\\img\\users\\default_user_pic");
+	    //targetFile.createNewFile();
+	    //FileUtils.copyInputStreamToFile(fileContent, targetFile);
 	    Date dateRegistration = new Date() ;
 	    Date lastLogin = new Date();
         if(DAO.isUserRegisteredToPlateform(username,email) == 0) {
-		Document user = new Document().append("email",email).append("username", username)
+		Document user = new Document().append("_id", id).append("email",email).append("username", username)
 				.append("password",password).append("fullName",fullName)
 				.append("score", score).append("description", description)
 				.append("lastLogin", lastLogin).append("dateRegistration", dateRegistration)
 				.append("role","user");
-		mongodbConnection.getCollection("user").insertOne(user);
+		mongodbConnection.getCollection("User").insertOne(user);
 		request.getRequestDispatcher("/Users.jsp?add=success").forward(request, response);
         }
         else {       

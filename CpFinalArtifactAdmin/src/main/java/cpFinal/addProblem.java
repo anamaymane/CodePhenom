@@ -22,7 +22,7 @@ import org.bson.Document;
 @MultipartConfig
 public class addProblem extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	String PROBLEMS_PATH = "/home/aym/jee_workspace/CpFinalArtifactAdmin/src/main/webapp/problems/";
+	String PROBLEMS_PATH = "C:\\Users\\AIT RAMI\\github\\CodePhenomRemastered\\CpFinalArtifactAdmin\\src\\main\\webapp\\problems";
 
     /**
      * @see HttpServlet#HttpServlet()

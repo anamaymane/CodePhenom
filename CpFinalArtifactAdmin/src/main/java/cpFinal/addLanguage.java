@@ -21,6 +21,7 @@ import org.bson.Document;
  */
 @MultipartConfig
 public class addLanguage extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
       
     /**
@@ -43,14 +44,17 @@ public class addLanguage extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
 		String name = request.getParameter("LanguageName");
+		request.setAttribute("add", "Success");
         if(DAO.isLanguageNameExiste(name) == 0) {
         	
 		Document user;
-		long ID = DAO.getMaxDocument("TestCase") +1 ;
-		user = new Document().append("-id", ID).append("name",name);
-			mongodbConnection.getCollection("AvailableLanguage").insertOne(user);
+		long ID = DAO.getMaxDocument("AvailableLanguage") +1 ;
+		user = new Document().append("_id", ID).append("name",name);
+		mongodbConnection.getCollection("AvailableLanguage").insertOne(user);
 		request.getRequestDispatcher("/addLanguage.jsp?add=success").forward(request, response);
+
         }
         else {       
             response.setIntHeader("Refresh",0);
