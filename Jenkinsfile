@@ -1,9 +1,8 @@
 pipeline {
     agent {
         docker {
-            image 'code_phenom_remastered_main_app:latest' 
-            args '-d -it -v /codephenomremastered:/codephenomremastered -v /submissions:/submissions -v /problems:/problems --user root --name main_app_codephenom' 
-            idleMinutes 7500       
+            image 'debian:latest' 
+            args '-d -it -v /codephenomremastered:/codephenomremastered -v /submissions:/submissions -v /problems:/problems --user root --name test'   
         }
     }
     stages {
@@ -23,6 +22,8 @@ pipeline {
                      stable"'
                  sh 'apt-get install -y docker-ce docker-ce-cli containerd.io'
                  sh 'export DOCKER_HOST="tcp://172.17.0.1:2375"'
+                 sh 'docker run -d -v /codephenomremastered:/codephenomremastered -v /submissions:/submissions -v /problems:/problems --user root --name main_app_codephenom'
+                 sh 'docker exec -it main_app_codephenom bash'
                  sh 'cd /codephenomremastered'
                  sh 'ls /codephenomremastered'
                  sh 'mvn -f /codephenomremastered/pom.xml package'
