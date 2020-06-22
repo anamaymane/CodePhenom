@@ -20,7 +20,7 @@
 </div>
 		<!-- /.container-fluid -->
 	</section>
-		
+
 		<section class="content">
       <div class="row">
         <div class="col-12">
@@ -69,7 +69,7 @@
           <form action="./addLanguage" method="post" enctype="multipart/form-data">
          <label >Add new supported language</label>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Add language " name="LanguageName" required>
+          <input type="text" class="form-control" placeholder="Add language " name="LanguageName" id="LanguageName" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-file"></span>
@@ -79,7 +79,7 @@
          <div class="col-4">
           	<div class="col-lg-6">
                 <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            <button type="submit" id="submit" class="btn btn-primary btn-block">Submit</button>
           </div>
           <!-- /.col -->
         </div>
