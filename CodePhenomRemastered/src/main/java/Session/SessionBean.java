@@ -16,11 +16,12 @@ public class SessionBean implements Serializable {
     public static HttpSession session = null;
 
     public HttpSession getSession() {
-        if(session == null) {
+        if(session != null) {
             FacesContext facesContext = FacesContext.getCurrentInstance();
             session = (HttpSession) facesContext.getExternalContext().getSession(false);
+            return session;
         }
-        return (HttpSession) session;
+        else return null;
     }
 
 }

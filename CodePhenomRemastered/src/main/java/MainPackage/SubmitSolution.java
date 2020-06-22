@@ -27,7 +27,9 @@ public class SubmitSolution extends HttpServlet {
                 if (request.getParameter("problemId") != null && request.getParameter("username") != null) {
 
                     List<AvailableLanguage> languagesName = new ProblemDao().getAvailableLanguages();
+                    String problemId = request.getParameter("problemId");
                     request.setAttribute("languagesName", languagesName);
+                    request.setAttribute("problemId", problemId);
                     request.getRequestDispatcher("/submitSolution.xhtml").forward(request, response);
 
                 } else request.getRequestDispatcher("/404.xhtml").forward(request, response);

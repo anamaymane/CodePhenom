@@ -15,21 +15,27 @@ import java.util.List;
 @WebServlet("/viewSubmission")
 public class ViewSubmission extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
 
-                String problemId = request.getParameter("problemId");
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            System.out.println("begin");
+            String problemId = request.getParameter("problemId").toString();
+            if (problemId != null){
+                System.out.println("not null");
                 List<Submission> submissions = new UserDao().getSubmission(problemId);
                 request.setAttribute("submissions",submissions);
                 request.getRequestDispatcher("/viewSubmission.xhtml").forward(request, response);
+            }
+            else {
+                request.getRequestDispatcher("/404.xhtml").forward(request, response);
+            }
 
 
         }
         catch(Exception e){
             System.out.println(e.getMessage());
         }
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

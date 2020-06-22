@@ -5,6 +5,7 @@ import Model.User;
 import Session.SessionBean;
 import org.bson.Document;
 
+import javax.faces.context.FacesContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,14 +25,17 @@ public class SignInWork extends HttpServlet {
                System.out.println("email : " + email + " password : "+ password);
                 User user = new UserDao().getUser(email, password);
                 if(user != null){
-                    //
-                    HttpSession session = request.getSession();
+                    HttpSession session =  request.getSession(true);
+                    SessionBean.session = session;
                     session.setAttribute("userId",user.getUserId());
                     session.setAttribute("username",user.getUsername());
                     session.setAttribute("email",user.getEmail());
                     session.setAttribute("fullName",user.getFullName());
                     session.setAttribute("description",user.getDescription());
                     System.out.println("entered here");
+                }
+                else {
+                    System.out.println("no user found");
                 }
 
                 request.getRequestDispatcher("/index.xhtml").forward(request, response);

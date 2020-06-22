@@ -63,12 +63,11 @@ public class UserDao {
 
 
         String query = "FROM User as h where h.email = :email and h.password = :password";
-        List<User> users = entityManager.createQuery( query , User.class ).setParameter("email",email)
+        User user = entityManager.createQuery( query , User.class ).setParameter("email",email)
                 .setParameter("password",password)
-                .getResultList();
-        System.out.println("the size is : " + users.size());
-        if(users.size() == 0) return null;
-        else return users.iterator().next();
+                .getSingleResult();
+
+        return user;
     }
 
     public void changeUserPassword(String username, String newPassword) throws ClassNotFoundException {
@@ -213,7 +212,7 @@ public class UserDao {
 
         entityManager.getTransaction().begin();
 
-        String query = "FROM Submission as h where username = :user or problemId = :pID order by dateSubmission DESC";
+        String query = "FROM Submission as h where username = :user and problemId = :pID order by dateSubmission DESC";
         List<Submission> submissions = entityManager.createQuery( query , Submission.class )
                 .setParameter("user",username)
                 .setParameter("pID",problemId)
@@ -229,6 +228,10 @@ public class UserDao {
         entityManager = entityManagerFactory.createEntityManager();
 
         entityManager.getTransaction().begin();
+
+        System.out.println("hi");
+
+        System.out.println("problem Id  : " + problemId);
 
         String query = "FROM Submission as h where problemId = :pID order by dateSubmission DESC";
         List<Submission> submissions = entityManager.createQuery( query , Submission.class )

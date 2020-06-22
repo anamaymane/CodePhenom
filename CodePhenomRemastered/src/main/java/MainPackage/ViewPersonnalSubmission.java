@@ -16,6 +16,10 @@ import java.util.List;
 
 public class ViewPersonnalSubmission extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             // TODO Auto-generated method stub
             HttpSession session = request.getSession(false);
@@ -37,9 +41,5 @@ public class ViewPersonnalSubmission extends HttpServlet {
         catch(Exception e){
             System.out.println(e.getMessage());
         }
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

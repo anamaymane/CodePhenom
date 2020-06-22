@@ -3,8 +3,10 @@ package MainPackage;
 import Dao.UserDao;
 import Model.Message;
 import Model.User;
+import Session.SessionBean;
 import org.bson.Document;
 
+import javax.faces.context.FacesContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,9 +25,10 @@ public class UserPageRedirection extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            HttpSession session = request.getSession(false);
-            if (session != null) {
-                String username = session.getAttribute("username").toString();
+
+
+            if (SessionBean.session != null) {
+                String username = SessionBean.session.getAttribute("username").toString();
                 System.out.println("Username : " + username);
                 List<Message> messagesReceived = new UserDao().getUserMessagesReceived(username);
                 request.setAttribute("messageReceivedList", messagesReceived);

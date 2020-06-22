@@ -72,13 +72,11 @@
                         </div>
                         <br/>
                         <div>
-                            <form method="post" action="./viewSubmission">
                                 <input name="problemId" type="hidden" value="#{requestScope['problem'].problemId}"/>
-                                <button class="btn btn-primary"
-                               type="submit"> <i
+                                <a class="btn btn-primary"
+                               href="./viewSubmission?problemId=#{requestScope['problem'].problemId}"> <i
                                     class="fa fa-eye"></i>&#160; View submission
-                            </button>
-                            </form>
+                            </a>
                         </div>
                         <div></div>
                     </div>
@@ -88,13 +86,12 @@
 
         <div class="row justify-content-center" style="margin-top: 60px">
             <div class="col-lg-12 text-center">
-                <form method="post" action="./viewPersonnalSubmission">
                 <c:choose>
                     <c:when test="#{sessionBean.getSession() != null}">
-                        <input name="problemId" type="hidden" value="#{requestScope['problem'].problemId}"/>
-                        <button class="btn btn-warning btn-sm "
-                           type="submit"><i
-                                class="fa fa-eye"></i>&#160;View personnal submission</button>
+
+                        <a class="btn btn-warning btn-sm "
+                           href="./viewPersonnalSubmission?problemId=#{requestScope['problem'].problemId}"><i
+                                class="fa fa-eye"></i>&#160;View personnal submission</a>
                     </c:when>
                     <c:otherwise>
 
@@ -102,7 +99,7 @@
                                 class="fas fa-eye"></i>&#160;View personnal submission</a>
                     </c:otherwise>
                 </c:choose>
-                </form>
+
             </div>
         </div>
 

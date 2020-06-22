@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-
+<f:view transient="true">
 <body class="bg-theme bg-theme1">
 
 
@@ -21,6 +22,7 @@
         <ui:include src="components/navbarUser.xhtml"/>
     </ui:insert>
 </div>
+
 
 <div class="clearfix"></div>
 
@@ -155,6 +157,6 @@
         element.classList.add("no_background");
     });
 </script>
-
+</f:view>
 </html>
 

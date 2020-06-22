@@ -1,10 +1,7 @@
 package Dao;
 
 import DatabasePackage.HibernateOGMUtil;
-import Model.AvailableLanguage;
-import Model.Commentary;
-import Model.Problem;
-import Model.User;
+import Model.*;
 import com.mongodb.MongoClient;
 import com.mongodb.client.AggregateIterable;
 import com.mongodb.client.MongoDatabase;
@@ -193,6 +190,77 @@ public class ProblemDao {
         HibernateOGMUtil.closeEntityManagerFactory(entityManagerFactory);
 
         return als;
+    }
+
+    public String getProblemCategoryFromId(String problemId) throws ClassNotFoundException {
+
+        entityManagerFactory = HibernateOGMUtil.setUpEntityManagerFactory();
+
+        entityManager = entityManagerFactory.createEntityManager();
+
+        entityManager.getTransaction().begin();
+
+        String query = "select type FROM Problem as h where h.problemId = :pId";
+        String type = entityManager.createQuery( query , String.class )
+                .setParameter("pId",problemId)
+                .getSingleResult();
+
+        return type;
+    }
+
+    public void insertSubmission(Submission submission) throws ClassNotFoundException {
+
+        entityManagerFactory = HibernateOGMUtil.setUpEntityManagerFactory();
+
+        entityManager = entityManagerFactory.createEntityManager();
+
+        entityManager.getTransaction().begin();
+
+        entityManager.persist( submission );
+
+        entityManager.getTransaction().commit();
+    }
+
+    public Problem getProblemByProblemId(String pID) throws ClassNotFoundException {
+
+        entityManagerFactory = HibernateOGMUtil.setUpEntityManagerFactory();
+
+        entityManager = entityManagerFactory.createEntityManager();
+
+        entityManager.getTransaction().begin();
+
+        String query = "FROM Problem as h where problemId = :pId";
+        Problem problem = entityManager.createQuery( query , Problem.class )
+                .setParameter("pId",pID)
+                .getSingleResult();
+
+        Collections.sort(problem.getCommentaries(), new CommentariesSort());
+
+        return problem;
+    }
+
+    public void updateSubmission(Long submissionId,String memoryResult, String timeResult, String verdict, String totalVerdict) throws ClassNotFoundException {
+
+        entityManagerFactory = HibernateOGMUtil.setUpEntityManagerFactory();
+
+        entityManager = entityManagerFactory.createEntityManager();
+
+        entityManager.getTransaction().begin();
+
+        String query = "FROM Submission as h where h.submissionId = :sId";
+
+        Submission submission = entityManager.createQuery( query , Submission.class )
+                .setParameter("sId",submissionId)
+                .getSingleResult();
+
+        submission.setMemoryResult(memoryResult);
+        submission.setTimeResult(timeResult);
+        submission.setVerdict(verdict);
+        submission.setTotalVerdict(totalVerdict);
+
+        entityManager.getTransaction().commit();
+
+        HibernateOGMUtil.closeEntityManagerFactory(entityManagerFactory);
     }
 
 }

@@ -2,6 +2,7 @@ package MainPackage;
 
 import Session.SessionBean;
 
+import javax.faces.context.FacesContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
