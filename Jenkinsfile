@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'debian:latest' 
+            image 'ubuntu:latest' 
             args '-d -it -v /codephenomremastered:/codephenomremastered -v /submissions:/submissions -v /problems:/problems --user root --name test'   
         }
     }
