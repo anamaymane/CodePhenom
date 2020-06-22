@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'code_phenom_remastered_main_app:latest' 
-            args '--user root --name agent'      
+            args '-d -v /codephenomremastered:/codephenomremastered -v /submissions:/submissions -v /problems:/problems --user root --name agent'      
         }
     }
     stages {
@@ -22,7 +22,7 @@ pipeline {
                      stable"'
                  sh 'apt-get install -y docker-ce docker-ce-cli containerd.io'
                  sh 'export DOCKER_HOST="tcp://172.17.0.1:2375"'
-                 sh 'docker run -d -v /codephenomremastered:/codephenomremastered -v /submissions:/submissions -v /problems:/problems --user root --name main_app_codephenom'
+                 sh 'docker run -d -v /codephenomremastered:/codephenomremastered -v /submissions:/submissions -v /problems:/problems --user root --name main_app_codephenom code_phenom_remastered_main_app'
                  sh 'docker exec -it main_app_codephenom bash'
                  sh 'apt-get -y install \
                  apt-transport-https \
