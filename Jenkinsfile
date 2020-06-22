@@ -3,6 +3,7 @@ pipeline {
         docker {
             image 'code_phenom_remastered_main_app:latest' 
             args '-d -it -v /codephenomremastered:/codephenomremastered -v /submissions:/submissions -v /problems:/problems --user root --name main_app_codephenom' 
+            idleMinutes 7500       
         }
     }
     stages {
