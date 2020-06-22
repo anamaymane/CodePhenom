@@ -22,9 +22,9 @@ pipeline {
                      stable"'
                  sh 'apt-get install -y docker-ce docker-ce-cli containerd.io'
                  sh 'export DOCKER_HOST="tcp://172.17.0.1:2375"'
-                 sh 'cd /CodePhenomRemastered'
+                 sh 'cd /codephenomremastered'
                  sh 'mvn package'
-                 sh 'cp /CodePhenomRemastered/target/COdePhenomRemastered.war /tomcat/webapps/codephenom.war'
+                 sh 'cp /codephenomremastered/target/COdePhenomRemastered.war /tomcat/webapps/codephenom.war'
                  sh 'cd /tomcat/bin'
                  sh './startup.sh '
             }
