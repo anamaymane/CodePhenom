@@ -1,7 +1,8 @@
 pipeline {
     agent {
         docker {
-            image 'code_phenom_remastered_main_app:latest'       
+            image 'code_phenom_remastered_main_app:latest' 
+            args '--user root --name agent'      
         }
     }
     stages {
