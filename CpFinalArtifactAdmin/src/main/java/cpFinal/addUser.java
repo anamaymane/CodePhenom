@@ -64,7 +64,7 @@ public class addUser extends HttpServlet {
 		Document user = new Document().append("_id", id).append("email",email).append("username", username)
 				.append("password",password).append("fullName",fullName)
 				.append("score", score).append("description", description)
-				.append("lastLogin", lastLogin).append("dateRegistration", dateRegistration)
+				.append("lastRegistration", lastLogin).append("dateRegistration", dateRegistration)
 				.append("role","user");
 		mongodbConnection.getCollection("User").insertOne(user);
 		request.getRequestDispatcher("/Users.jsp?add=success").forward(request, response);

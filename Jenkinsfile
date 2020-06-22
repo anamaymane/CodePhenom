@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'code_phenom_remastered_main_app:latest' 
-            args '-d -it -v /submissions:/submissions -v /problems:/problems --user root --name main_app_codephenom' 
+            args '-d -it -v /codephenomremastered:/codephenomremastered -v /submissions:/submissions -v /problems:/problems --user root --name main_app_codephenom'      
         }
     }
     stages {
@@ -22,11 +22,11 @@ pipeline {
                      stable"'
                  sh 'apt-get install -y docker-ce docker-ce-cli containerd.io'
                  sh 'export DOCKER_HOST="tcp://172.17.0.1:2375"'
-                 sh 'cd /CodePhenomRemastered'
-                 sh 'mvn package'
-                 sh 'cp /CodePhenomRemastered/target/COdePhenomRemastered.war /tomcat/webapps/codephenom.war'
-                 sh 'cd /tomcat/bin'
-                 sh './startup.sh '
+                 sh 'cd /codephenomremastered'
+                 sh 'ls /codephenomremastered'
+                 sh 'mvn -f /codephenomremastered/pom.xml package'
+                 sh 'cp /codephenomremastered/target/COdePhenomRemastered.war /tomcat/webapps/codephenom.war'
+                 sh 'cd /tomcat/bin; ./startup.sh'
             }
         }
 

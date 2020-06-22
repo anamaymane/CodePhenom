@@ -42,7 +42,7 @@ public class editUser extends HttpServlet {
 			email = elementuserData.get("email").toString();
 
 			dateRegistration = elementuserData.get("dateRegistration").toString();
-			lastLogin = elementuserData.get("lastLogin").toString();
+			lastLogin = elementuserData.get("lastRegistration").toString();
 
 		}
 		request.setAttribute("description", description);
