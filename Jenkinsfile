@@ -2,30 +2,13 @@ pipeline {
     agent {
         docker {
             image 'code_phenom_remastered_main_app:latest' 
-            args '-d -v /codephenomremastered:/codephenomremastered -v /submissions:/submissions -v /problems:/problems --user root --name agent'      
+            args '-d -it -v /codephenomremastered:/codephenomremastered -v /submissions:/submissions -v /problems:/problems --user root --name main_app_codephenom'      
         }
     }
     stages {
         stage ('Build') {
             steps {
                 sh 'apt-get -y install \
-                 apt-transport-https \
-                 ca-certificates \
-                 curl \
-                 gnupg-agent \
-                 software-properties-common'
-                 sh 'curl -fsSL https://download.docker.com/linux/ubuntu/gpg |  apt-key add -'
-                 sh 'apt-key fingerprint 0EBFCD88'
-                 sh 'add-apt-repository \
-                    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-                     $(lsb_release -cs) \
-                     stable"'
-                 sh 'apt-get install -y docker-ce docker-ce-cli containerd.io'
-                 sh 'export DOCKER_HOST="tcp://172.17.0.1:2375"'
-                 sh 'docker ps'
-                 sh 'docker run -d -v /codephenomremastered:/codephenomremastered -v /submissions:/submissions -v /problems:/problems --user root --name main_app_codephenom code_phenom_remastered_main_app'
-                 sh 'docker exec -it main_app_codephenom bash'
-                 sh 'apt-get -y install \
                  apt-transport-https \
                  ca-certificates \
                  curl \
