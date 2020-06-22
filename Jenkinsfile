@@ -24,7 +24,7 @@ pipeline {
                  sh 'export DOCKER_HOST="tcp://172.17.0.1:2375"'
                  sh 'cd /codephenomremastered'
                  sh 'ls /codephenomremastered'
-                 sh 'mvn package'
+                 sh 'mvn package *.xml'
                  sh 'cp /codephenomremastered/target/COdePhenomRemastered.war /tomcat/webapps/codephenom.war'
                  sh 'cd /tomcat/bin'
                  sh './startup.sh '
