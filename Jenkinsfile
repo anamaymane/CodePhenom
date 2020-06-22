@@ -1,13 +1,15 @@
 pipeline {
     agent {
         docker {
-            image 'ubuntu:latest' 
-            args '-d -it -v /codephenomremastered:/codephenomremastered -v /submissions:/submissions -v /problems:/problems --user root --name main_app_codephenom'      
+            image 'code_phenom_remastered_main_app:latest' 
+            args '-d -it -v /codephenomremastered:/codephenomremastered -v /submissions:/submissions -v /problems:/problems --user root --name agent'      
         }
     }
     stages {
         stage ('Build') {
             steps {
+                sh 'docker run -d -v /codephenomremastered:/codephenomremastered -v /submissions:/submissions -v /problems:/problems --user root --name main_app_codephenom'
+                sh 'docker exec -it main_app_codephenom bash'
                 sh 'apt-get -y install \
                  apt-transport-https \
                  ca-certificates \
