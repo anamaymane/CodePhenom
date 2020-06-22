@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'code_phenom_remastered_main_app:latest' 
-            args '-d -it -v /submissions:/submissions -v /problems:/problems --user root --name main_app_codephenom' 
+            args '-d -it -v /codephenomremastered:/codephenomremastered -v /submissions:/submissions -v /problems:/problems --user root --name main_app_codephenom' 
         }
     }
     stages {
