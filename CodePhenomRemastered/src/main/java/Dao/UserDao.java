@@ -10,7 +10,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @ManagedBean(name = "userDao")
 @SessionScoped
@@ -249,12 +251,14 @@ public class UserDao {
 
         entityManager.getTransaction().begin();
 
-        String query = "select distinct languageName from  Submission as h where h.username = :user";
+        String query = "select DISTINCT h.languageName from  Submission as h where h.username = :user";
         List<String> languages = entityManager.createQuery( query , String.class )
                 .setParameter("user",username)
                 .getResultList();
 
-        System.out.print("languages number : " + languages.size());
+        Set<String> set = new HashSet<>(languages);
+        languages.clear();
+        languages.addAll(set);
         return languages;
 
     }

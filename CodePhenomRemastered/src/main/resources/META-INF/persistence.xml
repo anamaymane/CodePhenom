@@ -11,7 +11,7 @@
         <properties>
             <property name="hibernate.ogm.datastore.provider" value="org.hibernate.ogm.datastore.mongodb.impl.MongoDBDatastoreProvider" />
             <property name="hibernate.ogm.datastore.database" value="CodePhenomRemastered" />
-            <property name="hibernate.ogm.datastore.host" value="172.17.0.3:27017" />
+            <property name="hibernate.ogm.datastore.host" value="172.17.0.2:27017" />
             <property name="hibernate.ogm.datastore.create_database" value="true" />
             <property name="hibernate.ogm.mongodb.authentication_database" value="CodePhenomRemastered"/>
             <property name="hibernate.ogm.datastore.username" value="aym" />

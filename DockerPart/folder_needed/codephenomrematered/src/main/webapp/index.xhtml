@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<f:view transient="true">
+<body class="bg-theme bg-theme1">
+
+
+<div id="header">
+    <ui:insert name="header">
+        <ui:include src="components/header.xhtml"/>
+    </ui:insert>
+</div>
+
+
+<div id="navbar">
+    <ui:insert name="navbar">
+        <ui:include src="components/navbarUser.xhtml"/>
+    </ui:insert>
+</div>
+
+
+<div class="clearfix"></div>
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="card mt-3">
+            <div class="card-content">
+                <div class="row row-group m-0">
+                    <div class="col-12 col-lg-6 col-xl-4 border-light">
+                        <div class="card-body">
+                            <h5 class="text-white mb-0"><h:outputText value="#{problemDao.getProblemsCategoriesIntCount()}"/> <span class="float-right"><i
+                                    class="fa fa-shopping-cart"></i></span></h5>
+                            <div class="progress my-3" style="height:3px;">
+                                <div class="progress-bar" style="width:55%"></div>
+                            </div>
+                            <p class="mb-0 text-white small-font">Number of problem's category available on the platform </p>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6 col-xl-4 border-light">
+                        <div class="card-body">
+                            <h5 class="text-white mb-0"><h:outputText value="#{problemDao.getProblemSize()}"/><span
+                                    class="float-right"><i class="fa fa-eye"></i></span></h5>
+                            <div class="progress my-3" style="height:3px;">
+                                <div class="progress-bar" style="width:55%"></div>
+                            </div>
+                            <p class="mb-0 text-white small-font">Problems number </p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4 border-light">
+                        <div class="card-body">
+                            <h5 class="text-white mb-0"><h:outputText value="#{userDao.getRegistredUsersSize()}"/> <span
+                                    class="float-right"><i class="fa fa-envira"></i></span></h5>
+                            <div class="progress my-3" style="height:3px;">
+                                <div class="progress-bar" style="width:55%"></div>
+                            </div>
+                            <p class="mb-0 text-white small-font">Number of registred users </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-wrapper ">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="row">
+                <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">Top Members
+
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <ui:repeat value="#{userDao.getUserOrderedByScore()}" var="user">
+                            <div class="col-lg-4 text-center">
+
+                                <h:graphicImage value="img/users/#{user.username}" style="width: 60px; height: 60px;"
+                                                alt="User Image" class="rounded-circle"/>
+                                <br/>
+                                <a
+                                    class="users-list-name"
+                            ><h:outputText value="#{user.username}"/></a>
+                                <br/>
+                                <span class="users-list-date"><h:outputText value="#{user.score}"/></span>
+                            </div>
+
+                        </ui:repeat>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="#">View All Users</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p:pieChart  type="pie" model="#{PrimeFacesBean.chartPieCategoryAvailable}"/>
+
+                </div>
+            </div>
+        </div>
+            <div class="col-lg-8">
+                <div class="card">
+                        <div class="container card-body"  style="margin-bottom: 20px">
+                            <p:carousel  id="carousel" value="#{PrimeFacesBean.getAnnouncements()}"  var="announcement" numVisible="1" effect="easeInStrong" headerText="Latest announcements">
+
+                                    <p:tab title="#{announcement.title}">
+                                        <h:panelGrid columns="2" cellpadding="10">
+                                            <h:outputText value="#{announcement.body}" escape="false"/>
+                                        </h:panelGrid>
+                                    </p:tab>
+
+
+                            </p:carousel>
+                            <h:outputStylesheet>
+                                .ui-carousel,
+                                .ui-carousel-header,
+                                .ui-carousel-header-title,
+                                .ui-carousel-page-links,
+                                .ui-carousel-page-link,
+                                .ui-carousel-item {
+                                    background:  transparent !important;
+                                    color:  white;
+                                }
+                            </h:outputStylesheet>
+                        </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+
+
+<ui:insert name="footer">
+    <ui:include src="components/footerUser.xhtml"/>
+</ui:insert>
+
+<script>
+    $( document ).ready(function() {
+        var element = document.getElementById("carousel");
+        element.classList.add("no_background");
+    });
+</script>
+</f:view>
+</html>
+

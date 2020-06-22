@@ -1,0 +1,16 @@
+no_background{
+background-color: transparent !important; 
+border: none !important;
+}
+
+.ui-carousel,
+.ui-carousel-header,
+.ui-carousel-header-title,
+.ui-carousel-page-links,
+.ui-carousel-page-link,
+.ui-carousel-item {
+    border: none !important;
+    padding: 0px;
+    margin 0px;
+    background: white;
+}

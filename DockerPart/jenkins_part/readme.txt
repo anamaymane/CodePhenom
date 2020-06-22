@@ -1,0 +1,1 @@
+The main part in teh building process of the pipline is the use of Jenkinsfile (declarative script), which uses a docker agent to build the main app container with all it's dependencies and launch the server.

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<body class="bg-theme bg-theme1">
+
+<div id="header">
+    <ui:insert name="header">
+        <ui:include src="components/header.xhtml"/>
+    </ui:insert>
+</div>
+
+<div id="navbar">
+    <ui:insert name="navbar">
+        <ui:include src="components/navbarUser.xhtml"/>
+    </ui:insert>
+</div>
+
+<div class="clearfix"></div>
+
+
+<div class="content-wrapper ">
+    <div class="container-fluid"
+         style="margin-bottom: 60px; margin-top: 35px;">
+
+        <div class="row mt-3">
+            <div class="col-lg-4">
+                <div class="card profile-card-2">
+                    <div class="card-img-block">
+                        <img class="img-fluid" src="https://media-exp1.licdn.com/dms/image/C561BAQGUPQZZTfTN5A/company-background_10000/0?e=2159024400&amp;v=beta&amp;t=a6joKAq7fQIHTBYSUlQFK7yc0fMZKcNhKkf-4ioIS-g" alt="Card image cap"/>
+                    </div>
+                    <div class="card-body pt-5 text-center">
+                        <h:graphicImage value="img/users/#{sessionBean.session.getAttribute('username')}"
+                                        class="profile"
+                                        alt="user avatar"/>
+                        <h5 class="card-title"><h:outputText value="#{sessionBean.session.getAttribute('username')}"/>
+                        </h5>
+                        <p class="card-text"><h:outputText value="#{requestScope['description']}"/></p>
+                    </div>
+
+                    <div class="card-body border-top border-light">
+                        <div class="media align-items-center">
+                            <div class="card-body justify-content-center">
+                                <strong><i class="zmdi zmdi-info"></i> Brief
+                                    description about you</strong>
+                                <br/>
+                                <strong style="margin-left: 20px"><h:outputText value="#{requestScope['user'].description}"/></strong>
+                            </div>
+                        </div>
+                        <hr/>
+
+                            <strong><i class="zmdi zmdi-group"></i>
+                                Programming languages used</strong>
+                        <br/>
+                        <p:ring  id="custom" value="#{PrimeFacesBean.languagesUsedByUser(requestScope['user'].username)}" var="languageName" styleClass="image-ring" easing="easeInOutBack">
+                            <p:graphicImage  id="img" value="img/languages/#{languageName}" width="50px" height="50px"/>
+                        </p:ring>
+
+                        <h:outputStylesheet>
+                             li {
+                                 background-color: transparent !important;
+                             }
+                        </h:outputStylesheet>
+
+                        <hr/>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="nav nav-tabs nav-tabs-primary top-icon nav-justified">
+                            <li class="nav-item">
+                                <a href="javascript:void();" data-target="#received_messages" data-toggle="pill"
+                                   class="nav-link active"><i class="icon-user"></i> <span
+                                        class="hidden-xs">Profile</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="javascript:void();" data-target="#send_messages" data-toggle="pill"
+                                   class="nav-link"><i class="icon-envelope-open"></i> <span
+                                        class="hidden-xs">Messages</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="javascript:void();" data-target="#setting" data-toggle="pill" class="nav-link"><i
+                                        class="icon-note"></i> <span class="hidden-xs">Edit</span></a>
+                            </li>
+                        </ul>
+                        <div class="tab-content p-3">
+                            <div class="tab-pane active" id="received_messages">
+                                <h5 class="mb-3">Received messages</h5>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card card-primary card-outline">
+                                            <div class="card-header">
+                                                <h3 class="card-title">Inbox</h3>
+                                                <!-- /.card-tools -->
+                                            </div>
+                                            <!-- /.card-header -->
+                                            <div class="card-body p-0">
+                                                <div class="table-responsive mailbox-messages">
+                                                    <div class="card-body">
+                                                        <table  id="example2" class="container table table-bordered table-hover">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>Sender</th>
+                                                                <th>Object</th>
+                                                                <th>Time</th>
+                                                                <th style="text-align: center"><i
+                                                                        class="fas fa-eye"></i> View message body
+                                                                </th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <ui:repeat id="jar" value="#{requestScope['messageReceivedList']}"
+                                                                       var="message">
+                                                                <tr>
+                                                                    <c:choose>
+                                                                        <c:when test="#{sessionBean.session.getAttribute('username').equals(message.sender)}">
+                                                                            <td class="mailbox-name"><span
+                                                                                    class="badge badge-warning">You</span>
+                                                                            </td>
+                                                                        </c:when>
+                                                                        <c:otherwise>
+                                                                            <td class="mailbox-name"><h:outputText
+                                                                                    value="#{message.sender}"/></td>
+                                                                        </c:otherwise>
+                                                                    </c:choose>
+
+                                                                    <td class="mailbox-subject"><b><h:outputText
+                                                                            value="#{message.object}"/></b></td>
+
+                                                                    <td class="mailbox-date"><h:outputText
+                                                                            value="#{message.date}"/></td>
+
+                                                                    <td>
+                                                                        <button type="button"
+                                                                                class="btn btn-block btn-primary btn-sm"
+                                                                                data-toggle="modal"
+                                                                                data-target="#modal-lg#{message.messageId}">View
+                                                                            message
+                                                                        </button>
+
+                                                                        <div class="modal fade card profile-card-2" id="modal-lg#{message.messageId}">
+                                                                            <div class="modal-dialog modal-lg">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header text-center">
+                                                                                        <h4 class="modal-title">
+                                                                                            <h:outputText
+                                                                                                    value="#{message.object}"/>
+                                                                                            <span class="badge badge-warning">to :
+                                                                                         <c:choose>
+                                                                                           <c:when test="#{sessionBean.session.getAttribute('username').equals(message.sender)}">
+                                                                                               <h:outputText
+                                                                                                       value="#{message.receiver}"/>
+
+                                                                                           </c:when>
+                                                                                        <c:otherwise>
+                                                                                            <h:outputText
+                                                                                                    value="you"/>
+                                                                                        </c:otherwise>
+                                                                                         </c:choose>
+                                                                                                   </span>
+                                                                                        </h4>
+                                                                                        <button type="button" class="close"
+                                                                                                data-dismiss="modal"
+                                                                                                aria-label="Close">
+                                                                                            <span aria-hidden="true"></span>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        <p>
+                                                                                            <h:outputText
+                                                                                                    value="#{message.content}"/>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    <div class="modal-footer justify-content-center">
+                                                                                        <button type="button"
+                                                                                                class="btn btn-default"
+                                                                                                data-dismiss="modal">Close
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </ui:repeat>
+                                                            </tbody>
+                                                        </table>
+                                                        <div style="margin-bottom: 40px; margin-top: 25px">
+                                                            <nav>
+                                                                <ul class="pagination justify-content-center pagination-sm">
+                                                                </ul>
+                                                            </nav>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.table -->
+                                                </div>
+                                                <!-- /.mail-box-messages -->
+                                            </div>
+                                            <!-- /.card-body -->
+                                        </div>
+                                        <!-- /.card -->
+                                    </div>
+                                </div>
+                                <!--/row-->
+                            </div>
+                            <div class="tab-pane" id="send_messages">
+
+                                <!-- /.tab-pane -->
+                                <div class="tab-pane" id="timeline">
+                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item"><a class="nav-link active"
+                                                                id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                                                aria-controls="home" aria-selected="true">To Admin</a></li>
+                                        <li class="nav-item"><a class="nav-link" id="profile-tab"
+                                                                data-toggle="tab" href="#profile" role="tab"
+                                                                aria-controls="profile" aria-selected="false">To other
+                                            users</a></li>
+                                    </ul>
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="tab-pane fade show active" id="home"
+                                             role="tabpanel" aria-labelledby="home-tab">
+                                            <div class="card-body">
+                                                <form class="form-horizontal" method="post"
+                                                      action="./sendMessageToAdmin">
+                                                    <input type="hidden"
+                                                           value="#{sessionBean.session.getAttribute('username')}"
+                                                    name="sender"/>
+                                                    <div class="form-group row">
+                                                        <label for="inputName2" class="col-sm-2 col-form-label">Object</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control"
+                                                                   placeholder="Your message object" name="object" required=""/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputExperience"
+                                                               class="col-sm-2 col-form-label">Message</label>
+                                                        <div class="col-sm-10">
+															<textarea class="form-control"
+                                                                      placeholder="The body of the message" name="content"
+                                                                      required=""></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row justify-content-center">
+                                                        <div>
+                                                            <button type="submit" class="btn btn-danger">Send</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="profile" role="tabpanel"
+                                             aria-labelledby="profile-tab">
+                                            <div class="card-body">
+                                                <form class="form-horizontal" method="post"
+                                                      action="./sendMessage">
+                                                    <input type="hidden"
+                                                           value="#{sessionBean.session.getAttribute('username')}"
+                                                    name="sender"/>
+                                                    <div class="form-group row">
+                                                        <label for="inputEmail" class="col-sm-2 col-form-label">Username</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" id="inputEmail"
+                                                                   placeholder="username of receiver" name="receiver"
+                                                                   required=""/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputName2" class="col-sm-2 col-form-label">Object</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control"
+                                                                   placeholder="Your message object" name="object" required=""/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputExperience"
+                                                               class="col-sm-2 col-form-label">Message</label>
+                                                        <div class="col-sm-10">
+															<textarea class="form-control"
+                                                                      placeholder="The body of the message" name="content"
+                                                                      required=""></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row justify-content-center">
+                                                        <div>
+                                                            <button type="submit" class="btn btn-danger">Send</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- /.tab-pane -->
+                            </div>
+                            <div class="tab-pane" id="setting">
+                                <form class="form-horizontal" method="post"
+                                      action="./changeUserData">
+                                    <div class="form-group row">
+                                        <label for="inputName5" class="col-sm-2 col-form-label">Old
+                                            Password</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputName5"
+                                                   placeholder="Type your old password here"
+                                                   name="oldPassword"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputName2" class="col-sm-2 col-form-label">Password</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputName2"
+                                                   placeholder="Type 'Keep' to keep the password unchanged or type new password"
+                                                   name="password" required=""/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputExperience" class="col-sm-2 col-form-label">Description</label>
+                                        <div class="col-sm-10">
+												<textarea class="form-control" id="inputExperience"
+                                                          placeholder="Type 'Keep' to keep the description unchanged or type new description"
+                                                          name="description" required=""/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row justify-content-center">
+                                        <div>
+                                            <button type="submit" class="btn btn-danger">Change</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!--start overlay-->
+        <div class="overlay toggle-menu"></div>
+        <!--end overlay-->
+
+    </div>
+</div>
+
+
+</body>
+
+
+<ui:insert name="footer">
+    <ui:include src="components/footerUser.xhtml"/>
+</ui:insert>
+
+<script>
+    $(function() {
+        $('#example2').DataTable({
+            "paging" : true,
+            "lengthChange" : false,
+            "searching" : true,
+            "ordering" : false,
+            "info" : false,
+            "autoWidth" : false,
+        });
+    });
+</script>
+
+</html>
+

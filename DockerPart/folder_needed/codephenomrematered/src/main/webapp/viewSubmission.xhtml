@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<body class="bg-theme bg-theme1">
+
+<div id="header">
+    <ui:insert name="header">
+        <ui:include src="components/header.xhtml"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.css"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/theme/dracula.css"/>
+    </ui:insert>
+</div>
+
+<div id="navbar">
+    <ui:insert name="navbar">
+        <ui:include src="components/navbarUser.xhtml"/>
+    </ui:insert>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-10">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">List of available problems</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <c:choose>
+                            <c:when test="#{requestScope['submissions'].size() > 0}">
+                                <div class="table-responsive">
+                        <table id="example2" class="table align-items-center table-flush table-bordered table-striped">
+
+
+                            <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Submition date</th>
+                                <th>Memory Result(KB)</th>
+                                <th>Time Result(ms)</th>
+                                <th>Verdict</th>
+                                <th>View code source</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <ui:repeat value="#{requestScope['submissions']}" var="submission">
+                            <tr>
+                                <td><i class="fas fa-user"></i>&#160;&#160;<a
+                                        href="#"><h:outputText value="#{sessionBean.getSession().getAttribute('username')}"/></a></td>
+                                <td><h:outputText value="#{submission.dateSubmission}"/></td>
+                                <td><i class="fas fa-memory"></i>&#160;<h:outputText value="#{submission.memoryResult}"/></td>
+                                <td><i class="fas fa-clock"></i>&#160;<h:outputText value="#{submission.timeResult}"/></td>
+                                <td><h:outputText value="#{submission.verdict}"/></td>
+                                <td><button type="button"
+                                            class="btn btn-block btn-primary btn-sm" data-toggle="modal"
+                                            data-target="#modal-lg-#{submission.submissionId}">
+                                    <i class="fas fa-eye"></i>&#160;&#160;View code source
+                                </button>
+                                    <div class="modal fade" id="modal-lg-#{submission.submissionId}">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header text-center">
+                                                    <h4 class="modal-title">
+                                                        Language used : <span class="badge badge-warning">
+																<h:outputText value="#{submission.languageName}"/>&#160;(Cliquer sur la zone de texte pour
+																afficher le resultat )
+															</span>
+                                                    </h4>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                        <span aria-hidden="true"></span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+														<textarea class="codeeditor"
+                                                                  style="text-align: left !important;" name="codeSource"
+                                                                  onclick=""><h:outputText value="#{submission.codeSource}"/></textarea>
+                                                </div>
+                                                <div class="modal-footer justify-content-center">
+                                                    <button type="button" class="btn btn-default"
+                                                            data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                            <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                    </div>
+                                </td>
+
+                            </tr>
+                                </ui:repeat>
+                            </tbody>
+                        </table>
+                                </div>
+                            </c:when>
+                        <c:otherwise>
+
+                        <h3>There is no submission for this problem</h3>
+                        </c:otherwise>
+                        </c:choose>
+
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+
+<ui:insert name="footer">
+    <ui:include src="components/footerUser.xhtml"/>
+</ui:insert>
+
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.js"></script>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/mode/javascript/javascript.js"></script>
+<h:outputScript>
+    var x = document.getElementsByClassName("codeeditor");
+    var i, editor;
+    for (i = 0; i &#60; x.length; i++) {
+        x[i].click();
+        editor = CodeMirror.fromTextArea(x[i]);
+        editor.setOption("theme", "dracula");
+        editor.setOption("lineNumbers", "true");
+        editor.setOption("readOnly", "true");
+    }
+</h:outputScript>
+
+
+</html>
+

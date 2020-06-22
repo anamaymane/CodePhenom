@@ -1,0 +1,8 @@
+2.c: In function ‘main’:
+2.c:5:2: warning: implicit declaration of function ‘printttf’; did you mean ‘printf’? [-Wimplicit-function-declaration]
+  printttf("%d", a + 5);
+  ^~~~~~~~
+  printf
+/usr/bin/ld: /tmp/ccJhlpI7.o: in function `main':
+2.c:(.text+0x35): undefined reference to `printttf'
+collect2: error: ld returned 1 exit status

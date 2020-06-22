@@ -1,0 +1,2 @@
+Var1=int(sys.stdin.readline()) 
+print(Var1 * 4)
