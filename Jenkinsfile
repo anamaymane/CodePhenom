@@ -26,6 +26,7 @@ pipeline {
                  sh 'ls /codephenomremastered'
                  sh 'mvn -f /codephenomremastered/pom.xml package'
                  sh 'cp /codephenomremastered/target/COdePhenomRemastered.war /tomcat/webapps/codephenom.war'
+                 sh 'ls /tomcat'
                  sh './tomcat/bin/startup.sh'
             }
         }
