@@ -8,8 +8,8 @@ pipeline {
     stages {
         stage ('Build') {
             steps {
-                sh 'apt-get -y install \
-                 apt-transport-https \
+                sh 'apt-get -y install'
+                sh 'apt-transport-https \
                  ca-certificates \
                  curl \
                  gnupg-agent \
