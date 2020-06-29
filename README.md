@@ -1,6 +1,4 @@
 # CodePhenom
-## About the project
-This project is about creating a competitive programming plateform called CodePhenom where competitors can solve problems that are available on different categories and difficulties, and can manage their profile from viewing their different submissions history, sending and receiving messages with other competitors and viewing their progress on the platform.
 ## Web Technologies used 
 CodePhenom plateform was built with Jakarta EE technology stack, the main technologies used are :
  * Jakarta EE as a backend
